@@ -65,7 +65,7 @@ public class WyswietlZwierzaki extends AppCompatActivity {
                         for (String nazwa : daneLista) {
                             tv = new TextView(getApplicationContext());
                             tv.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-                            tv.getLayoutParams().width = 50;
+                            tv.getLayoutParams().width = 200;
                             //Toast.makeText(WyswietlZwierzaki.this, documentSnapshots.get(nazwa).toString(), Toast.LENGTH_SHORT).show();
                             tv.setText(documentSnapshots.get(nazwa).toString());
                             tr.addView(tv);
@@ -119,7 +119,7 @@ public class WyswietlZwierzaki extends AppCompatActivity {
             tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
             TextView tv = new TextView(this);
             tv.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-            tv.getLayoutParams().width = 150;
+            tv.getLayoutParams().width = 200;
             tv.setText(nazwaKol);
             tv.setGravity(Gravity.CENTER);
             tr.addView(tv);
