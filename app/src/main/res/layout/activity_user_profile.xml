@@ -49,4 +49,14 @@
         android:layout_marginEnd="110dp"
         android:text="Wyświetl zwierzeta" />
 
+    <Button
+        android:id="@+id/buttonWizyta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonWyswietl"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="71dp"
+        android:text="Wizyta" />
+
 </RelativeLayout>

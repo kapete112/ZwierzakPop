@@ -21,6 +21,7 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="com.example.zwierzaki.wizRodz" />
         <activity android:name="com.example.zwierzaki.WyswietlZwierzaki" />
         <activity android:name="com.example.zwierzaki.AddAnimal" />
         <activity android:name="com.example.zwierzaki.UserProfileActivity" />

@@ -16,6 +16,7 @@ public class UserProfileActivity extends AppCompatActivity {
     Button logout ;
     Button AddAnima;
     Button showAnimal;
+    Button wizyta;
     // Creating TextView.
     TextView userEmailShow ;
 
@@ -33,6 +34,7 @@ public class UserProfileActivity extends AppCompatActivity {
         logout = (Button)findViewById(R.id.logout);
         userEmailShow = (TextView)findViewById(R.id.user_email);
         AddAnima=(Button)findViewById(R.id.buttonAddAnimal);
+        wizyta=findViewById(R.id.buttonWizyta);
         // Adding FirebaseAuth instance to FirebaseAuth object.
         firebaseAuth = FirebaseAuth.getInstance();
         showAnimal=findViewById(R.id.buttonWyswietl);
@@ -96,6 +98,13 @@ public class UserProfileActivity extends AppCompatActivity {
                 Intent intent = new Intent(UserProfileActivity.this, WyswietlZwierzaki.class);
                 startActivity(intent);
 
+            }
+        });
+        wizyta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserProfileActivity.this, wizRodz.class);
+                startActivity(intent);
             }
         });
 

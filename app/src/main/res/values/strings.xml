@@ -4,4 +4,16 @@
         <item>Samiec</item>
         <item>Samica</item>
     </array>
+    <string-array name="shopping_item">
+        <item>Szczepienie</item>
+        <item>Badania</item>
+        <item>Zabieg</item>
+        <item>Zabieg higieniczny</item>
+    </string-array>
+    <!--<string name="app_name">MultichoiceTutorial</string>-->
+    <string name="make_an_order">Make an order</string>
+    <string name="dialog_title">Wskaż cele wizyty </string>
+    <string name="ok_label">OK</string>
+    <string name="dismiss_label">Powrót</string>
+    <string name="clear_all_label">Wyczyść</string>
 </resources>
