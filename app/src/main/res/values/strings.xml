@@ -6,9 +6,11 @@
     </array>
     <string-array name="shopping_item">
         <item>Szczepienie</item>
+        <item>Wszczepienie chipa</item>
         <item>Badania</item>
         <item>Zabieg</item>
         <item>Zabieg higieniczny</item>
+
     </string-array>
     <!--<string name="app_name">MultichoiceTutorial</string>-->
     <string name="make_an_order">Make an order</string>
@@ -16,4 +18,12 @@
     <string name="ok_label">OK</string>
     <string name="dismiss_label">Powrót</string>
     <string name="clear_all_label">Wyczyść</string>
+
+    <string-array name="szczep_menu">
+        <item>Wścieklizna</item>
+        <item>Parwowiroza</item>
+        <item>Nosówka</item>
+        <item>Leptospiroza</item>
+        <item>Choroba Rubartha</item>
+    </string-array>
 </resources>

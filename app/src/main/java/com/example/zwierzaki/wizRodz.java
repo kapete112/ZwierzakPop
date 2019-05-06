@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,9 @@ public class wizRodz extends AppCompatActivity {
     String[] listItems;
     boolean[] checkedItems;
     ArrayList<Integer> mUserItems = new ArrayList<>();
+    String[] szczepItems;
+    boolean[] checkedSzczep;
+    ArrayList<Integer> szczepUserItem = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,16 +43,9 @@ public class wizRodz extends AppCompatActivity {
                 mBuilder.setMultiChoiceItems(listItems, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
-//                        if (isChecked) {
-//                            if (!mUserItems.contains(position)) {
-//                                mUserItems.add(position);
-//                            }
-//                        } else if (mUserItems.contains(position)) {
-//                            mUserItems.remove(position);
-//                        }
-                        if(isChecked){
+                        if (isChecked) {
                             mUserItems.add(position);
-                        }else{
+                        } else {
                             mUserItems.remove((Integer.valueOf(position)));
                         }
                     }
@@ -66,6 +63,7 @@ public class wizRodz extends AppCompatActivity {
                             }
                         }
                         mItemSelected.setText(item);
+                        szczep(0);
                     }
                 });
 
@@ -75,21 +73,65 @@ public class wizRodz extends AppCompatActivity {
                         dialogInterface.dismiss();
                     }
                 });
-
-                /*mBuilder.setNeutralButton(R.string.clear_all_label, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int which) {
-                        for (int i = 0; i < checkedItems.length; i++) {
-                            checkedItems[i] = false;
-                            mUserItems.clear();
-                            mItemSelected.setText("");
-                        }
-                    }
-                });*/
-
                 AlertDialog mDialog = mBuilder.create();
                 mDialog.show();
             }
+
         });
+
+    }
+
+    protected void szczep(int id) {
+        if (!mUserItems.isEmpty()) {
+            for (int i = 0; i < mUserItems.size(); i++) {
+                switch (listItems[mUserItems.get(i)]) {
+                    case "Szczepienie":
+                        Toast.makeText(wizRodz.this, "Szczepienie", Toast.LENGTH_SHORT).show();
+                        szczepItems = getResources().getStringArray(R.array.szczep_menu);
+                        checkedSzczep = new boolean[szczepItems.length];
+                        AlertDialog.Builder szczep = new AlertDialog.Builder(wizRodz.this);
+                        szczep.setTitle("wybierz szczepionki");
+                        szczep.setMultiChoiceItems(szczepItems, checkedSzczep, new DialogInterface.OnMultiChoiceClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
+                                if (isChecked) {
+                                    szczepUserItem.add(position);
+                                } else {
+                                    szczepUserItem.remove((Integer.valueOf(position)));
+                                }
+                            }
+                        });
+                        szczep.setCancelable(false);
+                        szczep.setPositiveButton("Dodaj", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+                        szczep.setNegativeButton(R.string.dismiss_label, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterfac, int i) {
+                                dialogInterfac.dismiss();
+                            }
+                        });
+                        AlertDialog szczepOkno = szczep.create();
+                        szczepOkno.show();
+                        break;
+                    case "Wszczepienie chipa":
+                        Toast.makeText(wizRodz.this, "Wszczepienie chipa", Toast.LENGTH_SHORT).show();
+                        break;
+                    case "Badania":
+                        Toast.makeText(wizRodz.this, "Badania", Toast.LENGTH_SHORT).show();
+                        break;
+                    case "Zabieg":
+                        Toast.makeText(wizRodz.this, "Zabieg", Toast.LENGTH_SHORT).show();
+                        break;
+                    case "Zabieg higieniczny":
+                        Toast.makeText(wizRodz.this, "Zabieg higieniczny", Toast.LENGTH_SHORT).show();
+                        break;
+
+                }
+            }
+        }
     }
 }
