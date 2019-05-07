@@ -26,4 +26,21 @@
         <item>Leptospiroza</item>
         <item>Choroba Rubartha</item>
     </string-array>
+
+    <string-array name="badania">
+        <item>Morfologia</item>
+        <item>Rozmaz krwi</item>
+        <item>Badanie moczu</item>
+        <item>Badania biochemiczne</item>
+        <item>RTG</item>
+        <item>EKG</item>
+        <item>USG</item>
+    </string-array>
+    <string-array name="zabHignien">
+        <item>Czyszczenie zębów</item>
+        <item>Wyciąganie kleszczy</item>
+        <item>Czyszczenie uszu</item>
+        <item>Strzyżenie sierści</item>
+        <item>Usuwanie kamienia nazębnego</item>
+    </string-array>
 </resources>

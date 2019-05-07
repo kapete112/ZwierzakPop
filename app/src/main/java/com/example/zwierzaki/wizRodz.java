@@ -23,7 +23,12 @@ public class wizRodz extends AppCompatActivity {
     String[] szczepItems;
     boolean[] checkedSzczep;
     ArrayList<Integer> szczepUserItem = new ArrayList<>();
-
+    String[] badItems;
+    boolean[] checkedBad;
+    ArrayList<Integer> badUserItem = new ArrayList<>();
+    String[] higienItems;
+    boolean[] checkedHigien;
+    ArrayList<Integer> higienUserItem = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,26 +113,86 @@ public class wizRodz extends AppCompatActivity {
 
                             }
                         });
-                        szczep.setNegativeButton(R.string.dismiss_label, new DialogInterface.OnClickListener() {
+                        /*szczep.setNegativeButton(R.string.dismiss_label, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterfac, int i) {
                                 dialogInterfac.dismiss();
                             }
-                        });
+                        });*/
                         AlertDialog szczepOkno = szczep.create();
                         szczepOkno.show();
                         break;
                     case "Wszczepienie chipa":
+                        // od razu do bazy
                         Toast.makeText(wizRodz.this, "Wszczepienie chipa", Toast.LENGTH_SHORT).show();
                         break;
                     case "Badania":
                         Toast.makeText(wizRodz.this, "Badania", Toast.LENGTH_SHORT).show();
+                        badItems = getResources().getStringArray(R.array.badania);
+                        checkedBad = new boolean[badItems.length];
+                        AlertDialog.Builder badanie = new AlertDialog.Builder(wizRodz.this);
+                        badanie.setTitle("wybierz badania");
+                        badanie.setMultiChoiceItems(badItems, checkedBad, new DialogInterface.OnMultiChoiceClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
+                                if (isChecked) {
+                                    badUserItem.add(position);
+                                } else {
+                                    badUserItem.remove((Integer.valueOf(position)));
+                                }
+                            }
+                        });
+                        badanie.setCancelable(false);
+                        badanie.setPositiveButton("Dodaj", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+                        /*szczep.setNegativeButton(R.string.dismiss_label, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterfac, int i) {
+                                dialogInterfac.dismiss();
+                            }
+                        });*/
+                        AlertDialog badOkno = badanie.create();
+                        badOkno.show();
                         break;
                     case "Zabieg":
                         Toast.makeText(wizRodz.this, "Zabieg", Toast.LENGTH_SHORT).show();
                         break;
                     case "Zabieg higieniczny":
+
                         Toast.makeText(wizRodz.this, "Zabieg higieniczny", Toast.LENGTH_SHORT).show();
+                        higienItems = getResources().getStringArray(R.array.zabHignien);
+                        checkedHigien = new boolean[higienItems.length];
+                        AlertDialog.Builder higien = new AlertDialog.Builder(wizRodz.this);
+                        higien.setTitle("wybierz badania");
+                        higien.setMultiChoiceItems(higienItems, checkedHigien, new DialogInterface.OnMultiChoiceClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
+                                if (isChecked) {
+                                    higienUserItem.add(position);
+                                } else {
+                                    higienUserItem.remove((Integer.valueOf(position)));
+                                }
+                            }
+                        });
+                        higien.setCancelable(false);
+                        higien.setPositiveButton("Dodaj", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+                        /*szczep.setNegativeButton(R.string.dismiss_label, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterfac, int i) {
+                                dialogInterfac.dismiss();
+                            }
+                        });*/
+                        AlertDialog higienOkno = higien.create();
+                        higienOkno.show();
                         break;
 
                 }
