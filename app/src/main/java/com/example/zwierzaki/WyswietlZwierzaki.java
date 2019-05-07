@@ -1,6 +1,7 @@
 package com.example.zwierzaki;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -64,8 +65,16 @@ public class WyswietlZwierzaki extends AppCompatActivity {
                         tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
                         for (String nazwa : daneLista) {
                             tv = new TextView(getApplicationContext());
+                            tv.setTextColor(Color.rgb(0,0,0));
                             tv.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-                            tv.getLayoutParams().width = 200;
+                            if(nazwa=="plec")
+                            {
+                                tv.getLayoutParams().width = 130;
+                            }
+                            else
+                            {
+                                tv.getLayoutParams().width = 190;
+                            }
                             //Toast.makeText(WyswietlZwierzaki.this, documentSnapshots.get(nazwa).toString(), Toast.LENGTH_SHORT).show();
                             tv.setText(documentSnapshots.get(nazwa).toString());
                             tr.addView(tv);
@@ -111,15 +120,20 @@ public class WyswietlZwierzaki extends AppCompatActivity {
 
     }*/
 
-
-
     private void ustawNaglowki() {
         tr = new TableRow(this);
         for (String nazwaKol : wartosciUsera) {
             tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
             TextView tv = new TextView(this);
             tv.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-            tv.getLayoutParams().width = 200;
+            if(nazwaKol=="Płeć")
+            {
+                tv.getLayoutParams().width = 130;
+            }
+            else
+            {
+                tv.getLayoutParams().width = 190;
+            }
             tv.setText(nazwaKol);
             tv.setGravity(Gravity.CENTER);
             tr.addView(tv);

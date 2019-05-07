@@ -12,11 +12,12 @@ public class Zwierze {
     private String NrMetrykiOjca;
     private String ImieZwierzecia;
     private String UID;
+    private String Zdjecie;
 
     public Zwierze() {
     }
 
-    public Zwierze(String datUr, String plec, String nrMetryki, String nrMetrykiMatki, String nrMetrykiOjca, String imieZwierzecia, String uID) {
+    public Zwierze(String datUr, String plec, String nrMetryki, String nrMetrykiMatki, String nrMetrykiOjca, String imieZwierzecia, String uID, String Zdjeciez) {
         DatUr = datUr;
         Plec = plec;
         NrMetryki = nrMetryki;
@@ -24,6 +25,7 @@ public class Zwierze {
         NrMetrykiOjca = nrMetrykiOjca;
         ImieZwierzecia = imieZwierzecia;
         UID = uID;
+        Zdjecie = Zdjeciez;
     }
 
     public String getDatUr() {
@@ -80,6 +82,14 @@ public class Zwierze {
 
     public void setUID(String UID) {
         this.UID = UID;
+    }
+
+    public String getZdjecie() {
+        return Zdjecie;
+    }
+
+    public void setZdjecie(String zdjecie) {
+        Zdjecie = zdjecie;
     }
 
     /*public Date getDatSm() {

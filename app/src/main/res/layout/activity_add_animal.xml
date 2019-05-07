@@ -10,19 +10,18 @@
         android:id="@+id/spinner_plec"
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:entries="@array/plcie"
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonKalendarz" />
 
     <EditText
         android:id="@+id/editText_numer_metryki"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="401dp"
+        android:layout_height="37dp"
         android:ems="10"
         android:hint="Numer metryki"
         android:inputType="text"
@@ -33,9 +32,8 @@
 
     <EditText
         android:id="@+id/editText_metryka_ojca"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="400dp"
+        android:layout_height="40dp"
         android:ems="10"
         android:hint="Numer metryki ojca"
         android:inputType="text"
@@ -46,21 +44,20 @@
 
     <EditText
         android:id="@+id/editText_metryka_matki"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="400dp"
+        android:layout_height="38dp"
         android:ems="10"
         android:hint="Numer metryki matki"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_numer_metryki" />
 
     <EditText
         android:id="@+id/editText_imie_zwierze"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="401dp"
+        android:layout_height="39dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Imie zwierzęcia"
@@ -73,21 +70,20 @@
     <Button
         android:id="@+id/buttonDodaj_zwierze"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="16dp"
         android:onClick="Dodaj"
         android:text="Dodaj"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextViewBlad" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/TextViewBlad"
-        android:layout_width="192dp"
-        android:layout_height="21dp"
+        android:layout_width="110dp"
+        android:layout_height="16dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:text="Nieprawidłowe dane!"
         android:textAlignment="center"
@@ -95,17 +91,17 @@
         android:textSize="18sp"
         android:textStyle="italic"
         android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDodaj_zwierze"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_plec" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonKalendarz"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="115dp"
+        android:layout_height="41dp"
         android:layout_marginStart="59dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:text="Kalendarz"
         app:layout_constraintEnd_toEndOf="parent"
@@ -114,15 +110,39 @@
 
     <TextView
         android:id="@+id/textViewKalendarz"
-        android:layout_width="182dp"
-        android:layout_height="28dp"
+        android:layout_width="119dp"
+        android:layout_height="33dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:text="Data"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/buttonKalendarz"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_metryka_ojca" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="193dp"
+        android:layout_height="96dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/TextViewBlad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/arrow_down_float" />
+
+    <Button
+        android:id="@+id/btnChoose"
+        android:layout_width="146dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:text="Wybierz zdjęcie"
+        app:layout_constraintHorizontal_bias="0.206"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_plec" />
 
 </android.support.constraint.ConstraintLayout>
