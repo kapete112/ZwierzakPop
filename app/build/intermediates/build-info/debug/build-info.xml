@@ -6,7 +6,7 @@
     density="xhdpi"
     format="10"
     plugin-version="3.3.2"
-    timestamp="1557236162618"
+    timestamp="1557237075744"
     token="4560706012535682433"
     verifier="COLD_SWAP_REQUESTED" >
 
@@ -70,7 +70,7 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1557236162618"
+        timestamp="1557237075744"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\HP\AndroidStudioProjects\Zwierzak\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
