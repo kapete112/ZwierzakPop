@@ -8,25 +8,24 @@
     tools:context="MainActivity">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:textSize="20dp"
-        android:textColor="#000"
-        android:text="Firebase User Registration Form"
-        android:gravity="center"
         android:layout_marginTop="60dp"
-        />
+        android:gravity="center"
+        android:text="User Registration"
+        android:textColor="#000"
+        android:textSize="20dp" />
 
     <EditText
+        android:id="@+id/EditText_User_EmailID"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/EditText_User_EmailID"
-        android:hint="Enter Your Email Here"
-        android:gravity="center"
         android:layout_below="@+id/textView"
         android:layout_marginTop="20dp"
-        />
+        android:gravity="center"
+        android:hint="Enter Your Email Here"
+        android:inputType="textWebEmailAddress" />
 
     <EditText
         android:layout_width="fill_parent"
@@ -44,15 +43,15 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/EditText_User_Password"
         android:layout_marginTop="20dp"
-        android:text="Click Here To Sign Up" />
+        android:text="Sign Up" />
 
     <Button
+        android:id="@+id/Button_LoginActivity"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/Button_LoginActivity"
         android:layout_below="@+id/Button_SignUp"
-        android:text="ALREADY SIGN UP ? LOGIN FROM HERE"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:text="ALREADY SIGN UP ? LOGIN" />
 
 </RelativeLayout>
 
