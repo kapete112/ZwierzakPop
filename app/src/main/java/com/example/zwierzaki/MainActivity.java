@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     // Creating string to hold email and password .
     String EmailHolder, PasswordHolder ;
 
+
     // Creating Progress dialog.
     ProgressDialog progressDialog;
 
