@@ -19,22 +19,11 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
-    // Creating EditText.
     EditText email, password ;
-
-    // Creating string to hold values.
     String EmailHolder, PasswordHolder;
-
-    // Creating buttons.
     Button Login,SignUP ;
-
-    // Creating Boolean to hold EditText empty true false value.
     Boolean EditTextEmptyCheck;
-
-    // Creating progress dialog.
     ProgressDialog progressDialog;
-
-    // Creating FirebaseAuth object.
     FirebaseAuth firebaseAuth;
 
     @Override
