@@ -46,7 +46,7 @@ public class WyswietlZwierzaki extends AppCompatActivity {
     TextView tv;
     private CollectionReference listaZwierzat = db.collection("Zwierzeta");
     final String[] wartosciUsera = {"Imie", "Data urodzenia", "Płeć", "Numer metryki"};
-    List<Zwierze> list = new ArrayList<Zwierze>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +55,7 @@ public class WyswietlZwierzaki extends AppCompatActivity {
         tl = findViewById(R.id.listOfAnimal);
         tr = new TableRow(getApplicationContext());
         ustawNaglowki();
-        listaZwierzat.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        listaZwierzat.whereEqualTo("uid",currentUI).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 if (!queryDocumentSnapshots.isEmpty()) {
@@ -67,7 +67,7 @@ public class WyswietlZwierzaki extends AppCompatActivity {
                             tv = new TextView(getApplicationContext());
                             tv.setTextColor(Color.rgb(0,0,0));
                             tv.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-                            if(nazwa=="plec")
+                            if(nazwa.equals("plec"))
                             {
                                 tv.getLayoutParams().width = 130;
                             }
@@ -126,7 +126,7 @@ public class WyswietlZwierzaki extends AppCompatActivity {
             tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
             TextView tv = new TextView(this);
             tv.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-            if(nazwaKol=="Płeć")
+            if(nazwaKol.equals("Płeć"))
             {
                 tv.getLayoutParams().width = 130;
             }
