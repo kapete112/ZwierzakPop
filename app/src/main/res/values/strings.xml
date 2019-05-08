@@ -25,6 +25,7 @@
         <item>Nosówka</item>
         <item>Leptospiroza</item>
         <item>Choroba Rubartha</item>
+        <item>Inne</item>
     </string-array>
 
     <string-array name="badania">
@@ -35,6 +36,7 @@
         <item>RTG</item>
         <item>EKG</item>
         <item>USG</item>
+        <item>Inne</item>
     </string-array>
     <string-array name="zabHignien">
         <item>Czyszczenie zębów</item>
@@ -42,5 +44,6 @@
         <item>Czyszczenie uszu</item>
         <item>Strzyżenie sierści</item>
         <item>Usuwanie kamienia nazębnego</item>
+        <item>Inne</item>
     </string-array>
 </resources>

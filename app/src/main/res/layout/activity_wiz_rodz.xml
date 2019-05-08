@@ -9,6 +9,50 @@
     tools:context=".wizRodz">
 
     <TextView
+        android:id="@+id/textViewKalendarz2"
+        android:layout_width="119dp"
+        android:layout_height="33dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginEnd="8dp"
+        android:text="Data"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonKalendarz"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_metryka_ojca" />
+
+    <TextView
+        android:id="@+id/textViewNrMetr"
+        android:layout_width="119dp"
+        android:layout_height="33dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="113dp"
+        android:layout_marginEnd="8dp"
+        android:text="numer metryki"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonKalendarz"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_metryka_ojca" />
+
+    <Button
+        android:id="@+id/buttonKalendarz2"
+        android:layout_width="115dp"
+        android:layout_height="41dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="153dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="8dp"
+        android:text="Kalendarz"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewKalendarz"
+        app:layout_constraintTop_toBottomOf="@+id/editText_metryka_ojca" />
+
+    <TextView
         android:id="@+id/tvItemSelected"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
