@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Badanie {
     private String uid;
+    private String numer_metryki;
     private Date date;
     private boolean Morfologia;
     private boolean krew;
@@ -25,7 +26,7 @@ public class Badanie {
 
     }
 
-    public Badanie(String uid, Date date, boolean morfologia, boolean krew, boolean mocz, boolean biochem, boolean RTG, boolean EKG, boolean USG, String inne) {
+    public Badanie(String uid, Date date, boolean morfologia, boolean krew, boolean mocz, boolean biochem, boolean RTG, boolean EKG, boolean USG, String inne,String nrmetr) {
         this.uid = uid;
         this.date = date;
         Morfologia = morfologia;
@@ -36,6 +37,7 @@ public class Badanie {
         this.EKG = EKG;
         this.USG = USG;
         this.inne = inne;
+        this.numer_metryki=nrmetr;
     }
 
     public String getUidd() {
@@ -116,5 +118,13 @@ public class Badanie {
 
     public void setInne(String inne) {
         this.inne = inne;
+    }
+
+    public String getNumer_metryki() {
+        return numer_metryki;
+    }
+
+    public void setNumer_metryki(String numer_metryki) {
+        this.numer_metryki = numer_metryki;
     }
 }

@@ -144,7 +144,7 @@ public class wizRodz extends AppCompatActivity {
 
             });*/
     }
-
+//
     protected void btnlistaOgolna(View view) {
         if (!nrMetr.getText().toString().equals("")) {
             view.setOnClickListener(new View.OnClickListener() {
@@ -226,6 +226,7 @@ public class wizRodz extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Szczepienie szczepienie = new Szczepienie();
+                                szczepienie.setNumer_metrykisz(nrMetr.getText().toString());
                                 Date data = new Date();
                                 szczepienie.setDate(data);
                                 szczepienie.setUid(currentUI);
@@ -248,7 +249,7 @@ public class wizRodz extends AppCompatActivity {
                                                 szczepienie.setRubarth(true);
                                                 break;
                                         }
-                                        Toast.makeText(wizRodz.this, "Zaznaczono" + szczepItems[i], Toast.LENGTH_SHORT).show();
+                                        //Toast.makeText(wizRodz.this, "Zaznaczono" + szczepItems[i], Toast.LENGTH_SHORT).show();
 
                                     }
                                     if (szczepUserItem.get(i) == 5 && !subEditText.getText().toString().matches("")) {
@@ -278,7 +279,18 @@ public class wizRodz extends AppCompatActivity {
                         break;
                     case "Wszczepienie chipa":
                         // od razu do bazy
-                        Toast.makeText(wizRodz.this, "Wszczepienie chipa", Toast.LENGTH_SHORT).show();
+                        Chip chip=new Chip();
+                        chip.setNrMetrch(nrMetr.getText().toString());
+                        Date data = new Date();
+                        chip.setDatech(data);
+                        chip.setUidch(currentUI);
+                        db.collection("Chip").add(chip).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                                Toast.makeText(wizRodz.this, "Dodano pomyślnie!", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        // Toast.makeText(wizRodz.this, "Wszczepienie chipa", Toast.LENGTH_SHORT).show();
                         break;
                     case "Badania":
                         badItems = getResources().getStringArray(R.array.badania);
@@ -307,6 +319,7 @@ public class wizRodz extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Badanie badaniee = new Badanie();
+                                badaniee.setNumer_metryki(nrMetr.getText().toString());
                                 Date data = new Date();
                                 badaniee.setDatee(data);
                                 badaniee.setUidd(currentUI);
@@ -341,10 +354,7 @@ public class wizRodz extends AppCompatActivity {
                                     }
                                 }
                                 dodaj(badaniee);
-
-
                             }
-
                             private void dodaj(Badanie badnie) {
                                 db.collection("Badania").add(badnie).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                     @Override
@@ -384,6 +394,7 @@ public class wizRodz extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 ZabHigien zabHigien = new ZabHigien();
+                                zabHigien.setNumerMetryki(nrMetr.getText().toString());
                                 Date data = new Date();
                                 zabHigien.setDatezh(data);
                                 zabHigien.setUidzh(currentUI);

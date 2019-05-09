@@ -3,14 +3,15 @@ package com.example.zwierzaki;
 import java.util.Date;
 
 public class ZabHigien {
-     String uidzh;
-     Date datezh;
-     boolean c_zebow;
-     boolean kleszcz;
-     boolean c_uszu;
-     boolean strzyzenie;
-     boolean usuw_kamienia;
-     String inne;
+    private String uidzh;
+    private Date datezh;
+    private boolean c_zebow;
+    private boolean kleszcz;
+    private boolean c_uszu;
+    private boolean strzyzenie;
+    private boolean usuw_kamienia;
+    private String inne;
+    private  String numerMetryki;
 
     public ZabHigien() {
         c_zebow=false;
@@ -20,7 +21,7 @@ public class ZabHigien {
         usuw_kamienia=false;
     }
 
-    public ZabHigien(String uidzh, Date datezh, boolean c_zebow, boolean kleszcz, boolean c_uszu, boolean strzyzenie, boolean usuw_kamienia, String inne) {
+    public ZabHigien(String uidzh, Date datezh, boolean c_zebow, boolean kleszcz, boolean c_uszu, boolean strzyzenie, boolean usuw_kamienia, String inne,String nrmetr) {
         this.uidzh = uidzh;
         this.datezh = datezh;
         this.c_zebow = c_zebow;
@@ -29,6 +30,7 @@ public class ZabHigien {
         this.strzyzenie = strzyzenie;
         this.usuw_kamienia = usuw_kamienia;
         this.inne = inne;
+        this.numerMetryki=nrmetr;
     }
 
     public String getUidzh() {
@@ -93,5 +95,13 @@ public class ZabHigien {
 
     public void setInne(String inne) {
         this.inne = inne;
+    }
+
+    public String getNumerMetryki() {
+        return numerMetryki;
+    }
+
+    public void setNumerMetryki(String numerMetryki) {
+        this.numerMetryki = numerMetryki;
     }
 }

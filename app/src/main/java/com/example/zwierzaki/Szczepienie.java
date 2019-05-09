@@ -5,6 +5,7 @@ import java.util.Date;
 public class Szczepienie {
     private String uid;
     private Date date;
+    private String numer_metrykisz;
     private boolean wscieklizna;
     private boolean parwowiroza;
     private boolean nosowka;
@@ -22,7 +23,7 @@ public class Szczepienie {
 
     }
 
-    public Szczepienie(String uid, Date date, boolean wscieklizna, boolean parwowiroza, boolean nosowka, boolean leptospiroza, boolean rubarth, String inne) {
+    public Szczepienie(String uid, Date date, boolean wscieklizna, boolean parwowiroza, boolean nosowka, boolean leptospiroza, boolean rubarth, String inne,String nrMetr) {
         this.uid = uid;
         this.date = date;
         this.wscieklizna = wscieklizna;
@@ -31,6 +32,7 @@ public class Szczepienie {
         this.leptospiroza = leptospiroza;
         this.rubarth = rubarth;
         this.inne = inne;
+        this.numer_metrykisz=nrMetr;
     }
 
     public String getUid() {
@@ -95,5 +97,13 @@ public class Szczepienie {
 
     public void setInne(String inne) {
         this.inne = inne;
+    }
+
+    public String getNumer_metrykisz() {
+        return numer_metrykisz;
+    }
+
+    public void setNumer_metrykisz(String numer_metrykisz) {
+        this.numer_metrykisz = numer_metrykisz;
     }
 }
