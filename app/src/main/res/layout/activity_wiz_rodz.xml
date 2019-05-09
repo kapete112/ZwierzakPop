@@ -23,21 +23,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_metryka_ojca" />
 
-    <TextView
-        android:id="@+id/textViewNrMetr"
-        android:layout_width="119dp"
-        android:layout_height="33dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="113dp"
-        android:layout_marginEnd="8dp"
-        android:text="numer metryki"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/buttonKalendarz"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_metryka_ojca" />
-
     <Button
         android:id="@+id/buttonKalendarz2"
         android:layout_width="115dp"
@@ -69,6 +54,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="149dp"
         android:layout_marginTop="167dp"
+        android:onClick="btnlistaOgolna"
         android:text="Wybierz" />
 
     <Button
@@ -80,5 +66,16 @@
         android:layout_marginStart="148dp"
         android:layout_marginTop="318dp"
         android:text="Button" />
+
+    <EditText
+        android:id="@+id/editTextNrMetr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="114dp"
+        android:ems="10"
+        android:hint="Numer metryki" />
 
 </RelativeLayout>

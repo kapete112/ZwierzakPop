@@ -16,8 +16,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class wizRodz extends AppCompatActivity {
@@ -37,18 +44,26 @@ public class wizRodz extends AppCompatActivity {
     String[] higienItems;
     boolean[] checkedHigien;
     ArrayList<Integer> higienUserItem = new ArrayList<>();
+    FirebaseUser currentUser;
+    private String currentUI;
+    private EditText nrMetr;
     private Button btnKalendarz;
     private TextView textKalendarz;
     private int year;
     private int month;
     private int dayOfMonth;
     private Calendar calendar;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wiz_rodz);
-
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+        currentUI = currentUser.getUid();
+        nrMetr = findViewById(R.id.editTextNrMetr);
         mOrder = (Button) findViewById(R.id.btnOrder);
         mItemSelected = (TextView) findViewById(R.id.tvItemSelected);
         btnKalendarz = findViewById(R.id.buttonKalendarz2);
@@ -83,53 +98,103 @@ public class wizRodz extends AppCompatActivity {
         listItems = getResources().getStringArray(R.array.shopping_item);
         checkedItems = new boolean[listItems.length];
 
-        mOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final AlertDialog.Builder mBuilder = new AlertDialog.Builder(wizRodz.this);
-                mBuilder.setTitle(R.string.dialog_title);
-                mBuilder.setMultiChoiceItems(listItems, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
-                        if (isChecked) {
-                            mUserItems.add(position);
-                        } else {
-                            mUserItems.remove((Integer.valueOf(position)));
-                        }
-                    }
-                });
-                mBuilder.setCancelable(false);
-                mBuilder.setPositiveButton(R.string.ok_label, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int which) {
-                        String item = "";
-                        for (int i = 0; i < mUserItems.size(); i++) {
-                            item = item + listItems[mUserItems.get(i)];
-                            if (i != mUserItems.size() - 1) {
-                                item = item + ", ";
+           /* mOrder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    final AlertDialog.Builder mBuilder = new AlertDialog.Builder(wizRodz.this);
+                    mBuilder.setTitle(R.string.dialog_title);
+                    mBuilder.setMultiChoiceItems(listItems, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
+                            if (isChecked) {
+                                mUserItems.add(position);
+                            } else {
+                                mUserItems.remove((Integer.valueOf(position)));
                             }
                         }
-                        mItemSelected.setText(item);
-                        szczep(0);
-                    }
-                });
+                    });
+                    mBuilder.setCancelable(false);
+                    mBuilder.setPositiveButton(R.string.ok_label, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int which) {
+                            String item = "";
+                            for (int i = 0; i < mUserItems.size(); i++) {
+                                item = item + listItems[mUserItems.get(i)];
+                                if (i != mUserItems.size() - 1) {
+                                    item = item + ", ";
+                                }
+                            }
+                            mItemSelected.setText(item);
+
+                            szczep(0);
+
+                        }
+                    });
 
 
+                    mBuilder.setNegativeButton(R.string.dismiss_label, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+                    AlertDialog mDialog = mBuilder.create();
+                    mDialog.show();
+                }
+
+            });*/
+    }
+
+    protected void btnlistaOgolna(View view) {
+        if (!nrMetr.getText().toString().equals("")) {
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    final AlertDialog.Builder mBuilder = new AlertDialog.Builder(wizRodz.this);
+                    mBuilder.setTitle(R.string.dialog_title);
+                    mBuilder.setMultiChoiceItems(listItems, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
+                            if (isChecked) {
+                                mUserItems.add(position);
+                            } else {
+                                mUserItems.remove((Integer.valueOf(position)));
+                            }
+                        }
+                    });
+                    mBuilder.setCancelable(false);
+                    mBuilder.setPositiveButton(R.string.ok_label, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int which) {
+                            String item = "";
+                            for (int i = 0; i < mUserItems.size(); i++) {
+                                item = item + listItems[mUserItems.get(i)];
+                                if (i != mUserItems.size() - 1) {
+                                    item = item + ", ";
+                                }
+                            }
+                            mItemSelected.setText(item);
+
+                            szczep(0);
+
+                        }
+                    });
 
 
-                mBuilder.setNegativeButton(R.string.dismiss_label, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                });
-                AlertDialog mDialog = mBuilder.create();
-                mDialog.show();
-            }
+                    mBuilder.setNegativeButton(R.string.dismiss_label, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+                    AlertDialog mDialog = mBuilder.create();
+                    mDialog.show();
+                }
 
-        });
-
-
+            });
+        } else {
+            Toast.makeText(wizRodz.this, "nie podano numeru metryki", Toast.LENGTH_SHORT).show();
+        }
     }
 
     protected void szczep(int id) {
@@ -160,14 +225,51 @@ public class wizRodz extends AppCompatActivity {
                         szczep.setPositiveButton("Dodaj", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                Szczepienie szczepienie = new Szczepienie();
+                                Date data = new Date();
+                                szczepienie.setDate(data);
+                                szczepienie.setUid(currentUI);
+                                for (int i = 0; i < szczepUserItem.size(); i++) {
+                                    if (checkedSzczep[szczepUserItem.get(i)]) {
+                                        switch (szczepItems[szczepUserItem.get(i)]) {
+                                            case "Wścieklizna":
+                                                szczepienie.setWscieklizna(true);
+                                                break;
+                                            case "Parwowiroza":
+                                                szczepienie.setParwowiroza(true);
+                                                break;
+                                            case "Nosówka":
+                                                szczepienie.setNosowka(true);
+                                                break;
+                                            case "Leptospiroza":
+                                                szczepienie.setLeptospiroza(true);
+                                                break;
+                                            case "Choroba Rubartha":
+                                                szczepienie.setRubarth(true);
+                                                break;
+                                        }
+                                        Toast.makeText(wizRodz.this, "Zaznaczono" + szczepItems[i], Toast.LENGTH_SHORT).show();
 
-                                for(int i=0;i<szczepUserItem.size();i++)
-                                {
-                                    if(szczepUserItem.get(i)==5 && !subEditText.getText().toString().matches(""))
-                                    {
-                                        Toast.makeText(wizRodz.this, szczepItems[5], Toast.LENGTH_SHORT).show();
                                     }
+                                    if (szczepUserItem.get(i) == 5 && !subEditText.getText().toString().matches("")) {
+                                        // Toast.makeText(wizRodz.this, szczepItems[5], Toast.LENGTH_SHORT).show();
+                                        szczepienie.setInne(subEditText.getText().toString());
+                                    }
+
+
                                 }
+                                dodaj(szczepienie);
+
+
+                            }
+
+                            private void dodaj(Szczepienie szczepienie) {
+                                db.collection("Szczepienia").add(szczepienie).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                    @Override
+                                    public void onSuccess(DocumentReference documentReference) {
+                                        Toast.makeText(wizRodz.this, "Dodano pomyślnie!", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                             }
                         });
 
@@ -204,21 +306,54 @@ public class wizRodz extends AppCompatActivity {
                         badanie.setPositiveButton("Dodaj", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                for(int i=0;i<badUserItem.size();i++)
-                                {
-                                    if(badUserItem.get(i)==7 && !subEditText1.getText().toString().matches(""))
-                                    {
-                                        Toast.makeText(wizRodz.this, badItems[5], Toast.LENGTH_SHORT).show();
+                                Badanie badaniee = new Badanie();
+                                Date data = new Date();
+                                badaniee.setDatee(data);
+                                badaniee.setUidd(currentUI);
+                                for (int i = 0; i < badUserItem.size(); i++) {
+                                    if (checkedBad[badUserItem.get(i)]) {
+                                        switch (badItems[badUserItem.get(i)]) {
+                                            case "Morfologia":
+                                                badaniee.setMorfologia(true);
+                                                break;
+                                            case "Rozmaz krwi":
+                                                badaniee.setKrew(true);
+                                                break;
+                                            case "Badanie moczu":
+                                                badaniee.setMocz(true);
+                                                break;
+                                            case "Badania biochemiczne":
+                                                badaniee.setBiochem(true);
+                                                break;
+                                            case "RTG":
+                                                badaniee.setRTG(true);
+                                                break;
+                                            case "EKG":
+                                                badaniee.setEKG(true);
+                                                break;
+                                            case "USG":
+                                                badaniee.setUSG(true);
+                                                break;
+                                        }
+                                    }
+                                    if (badUserItem.get(i) == 7 && !subEditText1.getText().toString().matches("")) {
+                                        badaniee.setInne(subEditText1.getText().toString());
                                     }
                                 }
+                                dodaj(badaniee);
+
+
+                            }
+
+                            private void dodaj(Badanie badnie) {
+                                db.collection("Badania").add(badnie).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                    @Override
+                                    public void onSuccess(DocumentReference documentReference) {
+                                        Toast.makeText(wizRodz.this, "Dodano pomyślnie!", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                             }
                         });
-                        /*szczep.setNegativeButton(R.string.dismiss_label, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterfac, int i) {
-                                dialogInterfac.dismiss();
-                            }
-                        });*/
                         AlertDialog badOkno = badanie.create();
                         badOkno.show();
                         break;
@@ -248,13 +383,44 @@ public class wizRodz extends AppCompatActivity {
                         higien.setPositiveButton("Dodaj", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                for(int i=0;i<higienUserItem.size();i++)
-                                {
-                                    if(higienUserItem.get(i)==5 && !subEditText2.getText().toString().matches(""))
-                                    {
-                                        Toast.makeText(wizRodz.this, higienItems[5], Toast.LENGTH_SHORT).show();
+                                ZabHigien zabHigien = new ZabHigien();
+                                Date data = new Date();
+                                zabHigien.setDatezh(data);
+                                zabHigien.setUidzh(currentUI);
+                                for (int i = 0; i < higienUserItem.size(); i++) {
+                                    if (checkedHigien[higienUserItem.get(i)]) {
+                                        switch (higienItems[higienUserItem.get(i)]) {
+                                            case "Czyszczenie zębów":
+                                                zabHigien.setC_zebow(true);
+                                                break;
+                                            case "Wyciąganie kleszczy":
+                                                zabHigien.setKleszcz(true);
+                                                break;
+                                            case "Czyszczenie uszu":
+                                                zabHigien.setC_uszu(true);
+                                                break;
+                                            case "Strzyżenie sierści":
+                                                zabHigien.setStrzyzenie(true);
+                                                break;
+                                            case "Usuwanie kamienia nazębnego":
+                                                zabHigien.setUsuw_kamienia(true);
+                                                break;
+                                        }
+                                    }
+                                    if (higienUserItem.get(i) == 5 && !subEditText2.getText().toString().matches("")) {
+                                        zabHigien.setInne(subEditText2.getText().toString());
                                     }
                                 }
+                                dodaj(zabHigien);
+                            }
+
+                            private void dodaj(ZabHigien zabHigien) {
+                                db.collection("ZabHigien").add(zabHigien).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                    @Override
+                                    public void onSuccess(DocumentReference documentReference) {
+                                        Toast.makeText(wizRodz.this, "Dodano pomyślnie!", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                             }
                         });
                         /*szczep.setNegativeButton(R.string.dismiss_label, new DialogInterface.OnClickListener() {
