@@ -57,25 +57,24 @@
         android:onClick="btnlistaOgolna"
         android:text="Wybierz" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="318dp"
-        android:text="Button" />
-
-    <EditText
-        android:id="@+id/editTextNrMetr"
-        android:layout_width="wrap_content"
+    <Spinner
+        android:id="@+id/spinnerZwierzaki"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="114dp"
-        android:ems="10"
-        android:hint="Numer metryki" />
+        android:layout_marginTop="131dp"
+        android:spinnerMode="dropdown" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="108dp"
+        android:text="Wybierz zwierze:" />
 
 </RelativeLayout>

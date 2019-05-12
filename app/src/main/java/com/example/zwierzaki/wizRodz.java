@@ -4,10 +4,13 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -16,11 +19,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -48,7 +56,6 @@ public class wizRodz extends AppCompatActivity {
     ArrayList<Integer> higienUserItem = new ArrayList<>();
     FirebaseUser currentUser;
     private String currentUI;
-    private EditText nrMetr;
     private Button btnKalendarz;
     private TextView textKalendarz;
     private int year;
@@ -57,24 +64,27 @@ public class wizRodz extends AppCompatActivity {
     private Calendar calendar;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth mAuth;
-
+    private Spinner spinner;
+    private String textKalendarzText
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wiz_rodz);
+
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
         currentUI = currentUser.getUid();
-        nrMetr = findViewById(R.id.editTextNrMetr);
-        mOrder = (Button) findViewById(R.id.btnOrder);
-        mItemSelected = (TextView) findViewById(R.id.tvItemSelected);
+
+        mOrder =  findViewById(R.id.btnOrder);
+        mItemSelected = findViewById(R.id.tvItemSelected);
         btnKalendarz = findViewById(R.id.buttonKalendarz2);
         textKalendarz = findViewById(R.id.textViewKalendarz2);
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
         dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
-        textKalendarz.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+        textKalendarzText=dayOfMonth + "/" + (month + 1) + "/" + year;
+        textKalendarz.setText(textKalendarzText);
         btnKalendarz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,7 +96,8 @@ public class wizRodz extends AppCompatActivity {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                                textKalendarz.setText(day + "/" + (month + 1) + "/" + year);
+                                textKalendarzText=dayOfMonth + "/" + (month + 1) + "/" + year;
+                                textKalendarz.setText(textKalendarzText);
                             }
                         }, year, month, dayOfMonth);
                 //datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
@@ -95,10 +106,26 @@ public class wizRodz extends AppCompatActivity {
         });
         listItems = getResources().getStringArray(R.array.shopping_item);
         checkedItems = new boolean[listItems.length];
-    }
+        spinner =  findViewById(R.id.spinnerZwierzaki);
+        final List<String> subjects = new ArrayList<>();
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, subjects);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        db.collection("Zwierzeta").whereEqualTo("uid",currentUI).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                for(DocumentSnapshot document:queryDocumentSnapshots)
+                {
+                    String wiersz=document.getString("imieZwierzecia")+"   "+document.getString("nrMetryki");
+                    subjects.add(wiersz);
+                }
+                adapter.notifyDataSetChanged();
+            }
+        });
 
-    protected void btnlistaOgolna(View view) {
-        if (!nrMetr.getText().toString().equals("")) {
+}
+
+    public void btnlistaOgolna(View view) {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -140,13 +167,14 @@ public class wizRodz extends AppCompatActivity {
                 }
 
             });
-        } else {
-            Toast.makeText(wizRodz.this, "nie podano numeru metryki", Toast.LENGTH_SHORT).show();
-        }
     }
 
     protected void szczep(int id) {
         if (!mUserItems.isEmpty()) {
+            String tekst = spinner.getSelectedItem().toString();
+            String[] czesci = tekst.split(" ");
+            final String piesnr=czesci[czesci.length-1];
+            Toast.makeText(wizRodz.this, piesnr, Toast.LENGTH_SHORT).show();
             LayoutInflater inflater = LayoutInflater.from(wizRodz.this);
             String strData = textKalendarz.getText().toString();
             SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy");
@@ -182,7 +210,7 @@ public class wizRodz extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Szczepienie szczepienie = new Szczepienie();
-                                szczepienie.setNumer_metrykisz(nrMetr.getText().toString());
+                                szczepienie.setNumer_metrykisz(piesnr);
                                 szczepienie.setDate(data);
                                 szczepienie.setUid(currentUI);
                                 for (int i = 0; i < szczepUserItem.size(); i++) {
@@ -230,7 +258,7 @@ public class wizRodz extends AppCompatActivity {
                         break;
                     case "Wszczepienie chipa":
                         Chip chip = new Chip();
-                        chip.setNrMetrch(nrMetr.getText().toString());
+                        chip.setNrMetrch(piesnr);
                         chip.setDatech(data);
                         chip.setUidch(currentUI);
                         db.collection("Wizyta").add(chip).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -264,7 +292,7 @@ public class wizRodz extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Badanie badaniee = new Badanie();
-                                badaniee.setNumer_metryki(nrMetr.getText().toString());
+                                badaniee.setNumer_metryki(piesnr);
                                 badaniee.setDatee(data);
                                 badaniee.setUidd(currentUI);
                                 for (int i = 0; i < badUserItem.size(); i++) {
@@ -313,7 +341,7 @@ public class wizRodz extends AppCompatActivity {
                         badOkno.show();
                         break;
                     case "Zabieg":
-                        Toast.makeText(wizRodz.this, "Zabieg", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(wizRodz.this, "Zabieg", Toast.LENGTH_SHORT).show();
                         break;
                     case "Zabieg higieniczny":
                         higienItems = getResources().getStringArray(R.array.zabHignien);
@@ -339,7 +367,7 @@ public class wizRodz extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 ZabHigien zabHigien = new ZabHigien();
-                                zabHigien.setNumerMetryki(nrMetr.getText().toString());
+                                zabHigien.setNumerMetryki(piesnr);
                                 zabHigien.setDatezh(data);
                                 zabHigien.setUidzh(currentUI);
                                 for (int i = 0; i < higienUserItem.size(); i++) {
@@ -385,4 +413,6 @@ public class wizRodz extends AppCompatActivity {
             }
         }
     }
+
+
 }
