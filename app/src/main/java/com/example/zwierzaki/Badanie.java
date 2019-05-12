@@ -13,6 +13,7 @@ public class Badanie {
     private boolean RTG;
     private boolean EKG;
     private boolean USG;
+    private String typ;
     private String inne;
 
     public Badanie() {
@@ -23,10 +24,11 @@ public class Badanie {
         RTG=false;
         EKG=false;
         USG=false;
+        typ="Badanie";
 
     }
 
-    public Badanie(String uid, Date date, boolean morfologia, boolean krew, boolean mocz, boolean biochem, boolean RTG, boolean EKG, boolean USG, String inne,String nrmetr) {
+    public Badanie(String uid, Date date, boolean morfologia, boolean krew, boolean mocz, boolean biochem, boolean RTG, boolean EKG, boolean USG, String inne,String nrmetr,String type) {
         this.uid = uid;
         this.date = date;
         Morfologia = morfologia;
@@ -38,6 +40,7 @@ public class Badanie {
         this.USG = USG;
         this.inne = inne;
         this.numer_metryki=nrmetr;
+        this.typ=type;
     }
 
     public String getUidd() {
@@ -126,5 +129,13 @@ public class Badanie {
 
     public void setNumer_metryki(String numer_metryki) {
         this.numer_metryki = numer_metryki;
+    }
+
+    public String getTypB() {
+        return typ;
+    }
+
+    public void setTypB(String typ) {
+        this.typ = typ;
     }
 }

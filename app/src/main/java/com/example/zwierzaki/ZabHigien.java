@@ -10,10 +10,12 @@ public class ZabHigien {
     private boolean c_uszu;
     private boolean strzyzenie;
     private boolean usuw_kamienia;
+    private String typ;
     private String inne;
-    private  String numerMetryki;
+    private String numerMetryki;
 
     public ZabHigien() {
+        typ="Zabieg Higieniczny";
         c_zebow=false;
         kleszcz=false;
         c_uszu=false;
@@ -21,7 +23,7 @@ public class ZabHigien {
         usuw_kamienia=false;
     }
 
-    public ZabHigien(String uidzh, Date datezh, boolean c_zebow, boolean kleszcz, boolean c_uszu, boolean strzyzenie, boolean usuw_kamienia, String inne,String nrmetr) {
+    public ZabHigien(String uidzh, Date datezh, boolean c_zebow, boolean kleszcz, boolean c_uszu, boolean strzyzenie, boolean usuw_kamienia, String inne,String nrmetr,String type) {
         this.uidzh = uidzh;
         this.datezh = datezh;
         this.c_zebow = c_zebow;
@@ -30,6 +32,7 @@ public class ZabHigien {
         this.strzyzenie = strzyzenie;
         this.usuw_kamienia = usuw_kamienia;
         this.inne = inne;
+        this.typ="Zabieg Higieniczny";
         this.numerMetryki=nrmetr;
     }
 
@@ -103,5 +106,14 @@ public class ZabHigien {
 
     public void setNumerMetryki(String numerMetryki) {
         this.numerMetryki = numerMetryki;
+    }
+
+
+    public String getTypZCh() {
+        return typ;
+    }
+
+    public void setTypZCh(String typ) {
+        this.typ = typ;
     }
 }

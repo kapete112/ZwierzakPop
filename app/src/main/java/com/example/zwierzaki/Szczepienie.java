@@ -11,6 +11,7 @@ public class Szczepienie {
     private boolean nosowka;
     private boolean leptospiroza;
     private boolean rubarth;
+    private String typ;
     private String inne;
 
     public Szczepienie() {
@@ -19,11 +20,10 @@ public class Szczepienie {
         nosowka=false;
         leptospiroza=false;
         rubarth=false;
-
-
+        typ="Szczepienie";
     }
 
-    public Szczepienie(String uid, Date date, boolean wscieklizna, boolean parwowiroza, boolean nosowka, boolean leptospiroza, boolean rubarth, String inne,String nrMetr) {
+    public Szczepienie(String uid, Date date, boolean wscieklizna, boolean parwowiroza, boolean nosowka, boolean leptospiroza, boolean rubarth, String inne,String nrMetr,String type) {
         this.uid = uid;
         this.date = date;
         this.wscieklizna = wscieklizna;
@@ -33,6 +33,7 @@ public class Szczepienie {
         this.rubarth = rubarth;
         this.inne = inne;
         this.numer_metrykisz=nrMetr;
+        this.typ=type;
     }
 
     public String getUid() {
@@ -105,5 +106,13 @@ public class Szczepienie {
 
     public void setNumer_metrykisz(String numer_metrykisz) {
         this.numer_metrykisz = numer_metrykisz;
+    }
+
+    public String getTypSz() {
+        return typ;
+    }
+
+    public void setTypSz(String typ) {
+        this.typ = typ;
     }
 }

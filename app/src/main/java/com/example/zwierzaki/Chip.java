@@ -6,14 +6,18 @@ public class Chip {
     private String uidch;
     private Date datech;
     private String nrMetrch;
+    private String typ;
 
     public Chip() {
+        typ="Chip";
     }
 
-    public Chip(String uidch, Date datech, String nrMetrch) {
+    public Chip(String uidch, Date datech, String nrMetrch,String type) {
         this.uidch = uidch;
         this.datech = datech;
         this.nrMetrch = nrMetrch;
+        this.typ=type;
+
     }
 
     public String getUidch() {
@@ -38,5 +42,13 @@ public class Chip {
 
     public void setNrMetrch(String nrMetrch) {
         this.nrMetrch = nrMetrch;
+    }
+
+    public String getTypCh() {
+        return typ;
+    }
+
+    public void setTypCh(String typ) {
+        this.typ = typ;
     }
 }
