@@ -65,7 +65,7 @@ public class wizRodz extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth mAuth;
     private Spinner spinner;
-    private String textKalendarzText
+    private String textKalendarzText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,6 +100,7 @@ public class wizRodz extends AppCompatActivity {
                                 textKalendarz.setText(textKalendarzText);
                             }
                         }, year, month, dayOfMonth);
+                datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
                 //datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
                 datePickerDialog.show();
             }

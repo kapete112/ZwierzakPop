@@ -113,6 +113,7 @@ public class AddAnimal extends AppCompatActivity {
                                 textKalendarz.setText(day + "/" + (month + 1) + "/" + year);
                             }
                         }, year, month, dayOfMonth);
+                datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
                 //datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
                 datePickerDialog.show();
 
