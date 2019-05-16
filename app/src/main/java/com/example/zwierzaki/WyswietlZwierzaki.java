@@ -68,6 +68,11 @@ public class WyswietlZwierzaki extends AppCompatActivity implements Zwierze_Info
 
                         zwierze.setNrMetryki(documentSnapshots.get("nrMetryki").toString());
                         zwierze.setImieZwierzecia(documentSnapshots.get("imieZwierzecia").toString());
+                       /* zwierze.setDatUr(documentSnapshots.get("datUr").toString());
+                        zwierze.setNrMetrykiMatki(documentSnapshots.get("nrMetrykiMatki").toString());
+                        zwierze.setNrMetrykiOjca(documentSnapshots.get("nrMetrykiOjca").toString());
+                        zwierze.setPlec(documentSnapshots.get("plec").toString());
+                        zwierze.setZdjecie(documentSnapshots.get("zdjecie").toString());*/
                         mZwierze.add(zwierze);
                     }
                 }
@@ -89,6 +94,7 @@ public class WyswietlZwierzaki extends AppCompatActivity implements Zwierze_Info
         Log.d(TAG, "onZwierzeClick: clicked." + position);
         //mZwierze.get(position);
         Intent intent = new Intent(this, ZwierzeActivity.class);
+        intent.putExtra("selected_zwierze", mZwierze.get(position));
         startActivity(intent);
     }
 }

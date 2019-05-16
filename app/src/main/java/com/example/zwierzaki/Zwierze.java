@@ -1,8 +1,11 @@
 package com.example.zwierzaki;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
 
-public class Zwierze {
+public class Zwierze implements Parcelable {
 
     private String DatUr;
    // Date DatSm= null;
@@ -27,6 +30,29 @@ public class Zwierze {
         UID = uID;
         Zdjecie = Zdjeciez;
     }
+
+    protected Zwierze(Parcel in) {
+        DatUr = in.readString();
+        Plec = in.readString();
+        NrMetryki = in.readString();
+        NrMetrykiMatki = in.readString();
+        NrMetrykiOjca = in.readString();
+        ImieZwierzecia = in.readString();
+        UID = in.readString();
+        Zdjecie = in.readString();
+    }
+
+    public static final Creator<Zwierze> CREATOR = new Creator<Zwierze>() {
+        @Override
+        public Zwierze createFromParcel(Parcel in) {
+            return new Zwierze(in);
+        }
+
+        @Override
+        public Zwierze[] newArray(int size) {
+            return new Zwierze[size];
+        }
+    };
 
     public String getDatUr() {
         return DatUr;
@@ -90,6 +116,23 @@ public class Zwierze {
 
     public void setZdjecie(String zdjecie) {
         Zdjecie = zdjecie;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(DatUr);
+        dest.writeString(Plec);
+        dest.writeString(NrMetryki);
+        dest.writeString(NrMetrykiMatki);
+        dest.writeString(NrMetrykiOjca);
+        dest.writeString(ImieZwierzecia);
+        dest.writeString(UID);
+        dest.writeString(Zdjecie);
     }
 
     /*public Date getDatSm() {
