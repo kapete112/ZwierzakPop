@@ -5,6 +5,11 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
 public class ZwierzeActivity extends AppCompatActivity {
 
     TextView tNrMetryki;
@@ -41,6 +46,18 @@ public class ZwierzeActivity extends AppCompatActivity {
 
             tDatUr = (TextView)findViewById(R.id.textData);
             tDatUr.setText(zwierze.getDatUr());
+
+             FirebaseFirestore db = FirebaseFirestore.getInstance();
+            db.collection("Zwierzeta").whereEqualTo("nrMetryki", zwierze.getNrMetryki()).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                @Override
+                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                    for (DocumentSnapshot document : queryDocumentSnapshots) {
+                        //String wiersz = document.getString("imieZwierzecia") + "   " + document.getString("nrMetryki");
+                       // subjects.add(wiersz);
+                    }
+                   // adapter.notifyDataSetChanged();
+                }
+            });
         }
     }
 }

@@ -3,7 +3,7 @@ package com.example.zwierzaki;
 import java.util.Date;
 
 public class ZabHigien {
-    private String uidzh;
+    private String uid;
     private Date datezh;
     private boolean c_zebow;
     private boolean kleszcz;
@@ -24,7 +24,7 @@ public class ZabHigien {
     }
 
     public ZabHigien(String uidzh, Date datezh, boolean c_zebow, boolean kleszcz, boolean c_uszu, boolean strzyzenie, boolean usuw_kamienia, String inne,String nrmetr,String type) {
-        this.uidzh = uidzh;
+        this.uid = uidzh;
         this.datezh = datezh;
         this.c_zebow = c_zebow;
         this.kleszcz = kleszcz;
@@ -36,12 +36,12 @@ public class ZabHigien {
         this.numer_metryki=nrmetr;
     }
 
-    public String getUidzh() {
-        return uidzh;
+    public String getUid() {
+        return uid;
     }
 
-    public void setUidzh(String uidzh) {
-        this.uidzh = uidzh;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public Date getDatezh() {
@@ -100,20 +100,18 @@ public class ZabHigien {
         this.inne = inne;
     }
 
-    public String getNumerMetryki() {
+    public String getNumer_metryki() {
         return numer_metryki;
     }
 
-    public void setNumerMetryki(String numer_metryki) {
+    public void setNumer_metryki(String numer_metryki) {
         this.numer_metryki = numer_metryki;
     }
 
 
-    public String getTypZCh() {
+    public String getTyp() {
         return typ;
     }
 
-    public void setTypZCh(String typ) {
-        this.typ = typ;
-    }
+
 }

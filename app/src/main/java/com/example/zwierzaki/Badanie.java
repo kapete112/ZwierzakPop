@@ -43,11 +43,11 @@ public class Badanie {
         this.typ=type;
     }
 
-    public String getUidd() {
+    public String getUid() {
         return uid;
     }
 
-    public void setUidd(String uid) {
+    public void setUid(String uid) {
         this.uid = uid;
     }
 
@@ -131,11 +131,9 @@ public class Badanie {
         this.numer_metryki = numer_metryki;
     }
 
-    public String getTypB() {
+    public String getTyp() {
         return typ;
     }
 
-    public void setTypB(String typ) {
-        this.typ = typ;
-    }
+
 }

@@ -5,16 +5,17 @@ import java.util.Date;
 public class Zabieg {
     private String Opis;
     private String numer_metryki;
-    private String uidz;
+    private String uid;
     private Date datez;
     private String typ;
 
     public Zabieg() {
+        this.typ="Zabieg";
     }
 
     public Zabieg( String opis, Date datez,String uidy,String nrmerr,String typez) {
         this.numer_metryki=nrmerr;
-        this.uidz=uidy;
+        this.uid=uid;
         this.Opis = opis;
         this.datez = datez;
         this.typ=typez;
@@ -37,27 +38,25 @@ public class Zabieg {
         this.datez = datez;
     }
 
-    public String getNrMetryki() {
+    public String getNumer_metryki() {
         return numer_metryki;
     }
 
-    public void setNrMetryki(String numer_metryki) {
+    public void setNumer_metryki(String numer_metryki) {
         this.numer_metryki = numer_metryki;
     }
 
-    public String getUidz() {
-        return uidz;
+    public String getUid() {
+        return uid;
     }
 
-    public void setUidz(String uidz) {
-        this.uidz = uidz;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
-    public String getTypz() {
+    public String getTyp() {
         return typ;
     }
 
-    public void setTypz(String typ) {
-        this.typ = typ;
-    }
+
 }

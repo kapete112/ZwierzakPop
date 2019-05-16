@@ -211,7 +211,7 @@ public class wizRodz extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Szczepienie szczepienie = new Szczepienie();
-                                szczepienie.setNumer_metrykisz(piesnr);
+                                szczepienie.setNumer_metryki(piesnr);
                                 szczepienie.setDate(data);
                                 szczepienie.setUid(currentUI);
                                 for (int i = 0; i < szczepUserItem.size(); i++) {
@@ -260,9 +260,9 @@ public class wizRodz extends AppCompatActivity {
                         break;
                     case "Wszczepienie chipa":
                         Chip chip = new Chip();
-                        chip.setNrMetrch(piesnr);
+                        chip.setNumer_metryki(piesnr);
                         chip.setDatech(data);
-                        chip.setUidch(currentUI);
+                        chip.setUid(currentUI);
                         db.collection("Wizyta").add(chip).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                             @Override
                             public void onSuccess(DocumentReference documentReference) {
@@ -296,7 +296,7 @@ public class wizRodz extends AppCompatActivity {
                                 Badanie badaniee = new Badanie();
                                 badaniee.setNumer_metryki(piesnr);
                                 badaniee.setDatee(data);
-                                badaniee.setUidd(currentUI);
+                                badaniee.setUid(currentUI);
                                 for (int i = 0; i < badUserItem.size(); i++) {
                                     if (checkedBad[badUserItem.get(i)]) {
                                         switch (badItems[badUserItem.get(i)]) {
@@ -366,10 +366,9 @@ public class wizRodz extends AppCompatActivity {
                                 }
                                 if (wantToCloseDialog) {
                                     Zabieg zabieg = new Zabieg();
-                                    zabieg.setNrMetryki(piesnr);
+                                    zabieg.setNumer_metryki(piesnr);
                                     zabieg.setDatez(data);
-                                    zabieg.setUidz(currentUI);
-                                    zabieg.setTypz("Zabieg");
+                                    zabieg.setUid(currentUI);
                                     zabieg.setOpis(subEditTextZab.getText().toString());
                                     db.collection("Wizyta").add(zabieg).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                         @Override
@@ -408,9 +407,9 @@ public class wizRodz extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 ZabHigien zabHigien = new ZabHigien();
-                                zabHigien.setNumerMetryki(piesnr);
+                                zabHigien.setNumer_metryki(piesnr);
                                 zabHigien.setDatezh(data);
-                                zabHigien.setUidzh(currentUI);
+                                zabHigien.setUid(currentUI);
                                 for (int i = 0; i < higienUserItem.size(); i++) {
                                     if (checkedHigien[higienUserItem.get(i)]) {
                                         switch (higienItems[higienUserItem.get(i)]) {

@@ -100,19 +100,17 @@ public class Szczepienie {
         this.inne = inne;
     }
 
-    public String getNumer_metrykisz() {
+    public String getNumer_metryki() {
         return numer_metryki;
     }
 
-    public void setNumer_metrykisz(String numer_metryki) {
+    public void setNumer_metryki(String numer_metryki) {
         this.numer_metryki = numer_metryki;
     }
 
-    public String getTypSz() {
+    public String getTyp() {
         return typ;
     }
 
-    public void setTypSz(String typ) {
-        this.typ = typ;
-    }
+
 }
