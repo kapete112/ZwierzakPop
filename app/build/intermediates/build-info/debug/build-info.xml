@@ -2,87 +2,95 @@
 <instant-run
     abi="armeabi-v7a,armeabi"
     api-level="23"
-    build-mode="HOT_WARM"
+    build-mode="COLD"
     density="xhdpi"
     format="10"
+    ir-eligibility="METHOD_DELETED"
     plugin-version="3.3.2"
-    timestamp="1557858410532"
-    token="-993004056401507916"
-    verifier="COMPATIBLE" >
+    timestamp="1557967658405"
+    token="-2678760564816393502"
+    verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="568" />
+        duration="343" />
     <task
         name="instant-run-dex"
-        duration="132" />
+        duration="0" />
     <task
         name="instant-run-transform"
-        duration="123" />
+        duration="31" />
     <task
         name="verifier"
-        duration="36" />
+        duration="3" />
 
     <artifact
-        location="C:\Users\HP\AndroidStudioProjects\Zwierzak3\app\build\intermediates\reload-dex\debug\classes.dex"
-        type="RELOAD_DEX" />
+        location="C:\Users\HP\AndroidStudioProjects\Zwierzak5\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\HP\AndroidStudioProjects\Zwierzak5\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
+        type="SPLIT_MAIN" />
 
     <build
         build-mode="FULL"
-        timestamp="1557857249570"
+        timestamp="1557961722755"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="C:\Users\HP\AndroidStudioProjects\Zwierzak3\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
+            location="C:\Users\HP\AndroidStudioProjects\Zwierzak5\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\HP\AndroidStudioProjects\Zwierzak3\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
+            location="C:\Users\HP\AndroidStudioProjects\Zwierzak5\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
+            type="SPLIT_MAIN" />
+        <artifact
+            location="C:\Users\HP\AndroidStudioProjects\Zwierzak5\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\HP\AndroidStudioProjects\Zwierzak3\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            location="C:\Users\HP\AndroidStudioProjects\Zwierzak5\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\HP\AndroidStudioProjects\Zwierzak3\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            location="C:\Users\HP\AndroidStudioProjects\Zwierzak5\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\HP\AndroidStudioProjects\Zwierzak3\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
+            location="C:\Users\HP\AndroidStudioProjects\Zwierzak5\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\HP\AndroidStudioProjects\Zwierzak3\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            location="C:\Users\HP\AndroidStudioProjects\Zwierzak5\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\HP\AndroidStudioProjects\Zwierzak3\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            location="C:\Users\HP\AndroidStudioProjects\Zwierzak5\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\HP\AndroidStudioProjects\Zwierzak3\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
+            location="C:\Users\HP\AndroidStudioProjects\Zwierzak5\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\HP\AndroidStudioProjects\Zwierzak3\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            location="C:\Users\HP\AndroidStudioProjects\Zwierzak5\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\HP\AndroidStudioProjects\Zwierzak3\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            location="C:\Users\HP\AndroidStudioProjects\Zwierzak5\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\HP\AndroidStudioProjects\Zwierzak3\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
+            location="C:\Users\HP\AndroidStudioProjects\Zwierzak5\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
             type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1557967590782"
+        verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="C:\Users\HP\AndroidStudioProjects\Zwierzak3\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
+            location="C:\Users\HP\AndroidStudioProjects\Zwierzak5\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
             type="SPLIT_MAIN" />
     </build>
     <build
-        build-mode="HOT_WARM"
-        timestamp="1557858350115"
-        verifier="COMPATIBLE" >
+        build-mode="COLD"
+        ir-eligibility="METHOD_DELETED"
+        timestamp="1557967658405"
+        verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="C:\Users\HP\AndroidStudioProjects\Zwierzak3\app\build\intermediates\builds\debug\1557858350115\classes.dex"
-            type="RELOAD_DEX" />
-    </build>
-    <build
-        build-mode="HOT_WARM"
-        timestamp="1557858410532"
-        verifier="COMPATIBLE" >
+            location="C:\Users\HP\AndroidStudioProjects\Zwierzak5\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            type="SPLIT" />
         <artifact
-            location="C:\Users\HP\AndroidStudioProjects\Zwierzak3\app\build\intermediates\reload-dex\debug\classes.dex"
-            type="RELOAD_DEX" />
+            location="C:\Users\HP\AndroidStudioProjects\Zwierzak5\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
+            type="SPLIT_MAIN" />
     </build>
 
 </instant-run>
