@@ -5,17 +5,17 @@ import java.util.Date;
 public class Chip {
     private String uidch;
     private Date datech;
-    private String nrMetrch;
+    private String numer_metryki;
     private String typ;
 
     public Chip() {
         typ="Chip";
     }
 
-    public Chip(String uidch, Date datech, String nrMetrch,String type) {
+    public Chip(String uidch, Date datech, String numer_metryki,String type) {
         this.uidch = uidch;
         this.datech = datech;
-        this.nrMetrch = nrMetrch;
+        this.numer_metryki = numer_metryki;
         this.typ=type;
 
     }
@@ -37,11 +37,11 @@ public class Chip {
     }
 
     public String getNrMetrch() {
-        return nrMetrch;
+        return numer_metryki;
     }
 
-    public void setNrMetrch(String nrMetrch) {
-        this.nrMetrch = nrMetrch;
+    public void setNrMetrch(String numer_metryki) {
+        this.numer_metryki = numer_metryki;
     }
 
     public String getTypCh() {

@@ -12,7 +12,7 @@ public class ZabHigien {
     private boolean usuw_kamienia;
     private String typ;
     private String inne;
-    private String numerMetryki;
+    private String numer_metryki;
 
     public ZabHigien() {
         typ="Zabieg Higieniczny";
@@ -33,7 +33,7 @@ public class ZabHigien {
         this.usuw_kamienia = usuw_kamienia;
         this.inne = inne;
         this.typ="Zabieg Higieniczny";
-        this.numerMetryki=nrmetr;
+        this.numer_metryki=nrmetr;
     }
 
     public String getUidzh() {
@@ -101,11 +101,11 @@ public class ZabHigien {
     }
 
     public String getNumerMetryki() {
-        return numerMetryki;
+        return numer_metryki;
     }
 
-    public void setNumerMetryki(String numerMetryki) {
-        this.numerMetryki = numerMetryki;
+    public void setNumerMetryki(String numer_metryki) {
+        this.numer_metryki = numer_metryki;
     }
 
 

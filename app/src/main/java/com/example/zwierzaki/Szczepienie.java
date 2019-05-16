@@ -5,7 +5,7 @@ import java.util.Date;
 public class Szczepienie {
     private String uid;
     private Date date;
-    private String numer_metrykisz;
+    private String numer_metryki;
     private boolean wscieklizna;
     private boolean parwowiroza;
     private boolean nosowka;
@@ -32,7 +32,7 @@ public class Szczepienie {
         this.leptospiroza = leptospiroza;
         this.rubarth = rubarth;
         this.inne = inne;
-        this.numer_metrykisz=nrMetr;
+        this.numer_metryki=nrMetr;
         this.typ=type;
     }
 
@@ -101,11 +101,11 @@ public class Szczepienie {
     }
 
     public String getNumer_metrykisz() {
-        return numer_metrykisz;
+        return numer_metryki;
     }
 
-    public void setNumer_metrykisz(String numer_metrykisz) {
-        this.numer_metrykisz = numer_metrykisz;
+    public void setNumer_metrykisz(String numer_metryki) {
+        this.numer_metryki = numer_metryki;
     }
 
     public String getTypSz() {

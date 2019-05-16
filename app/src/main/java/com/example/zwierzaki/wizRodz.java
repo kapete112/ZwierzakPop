@@ -66,6 +66,7 @@ public class wizRodz extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private Spinner spinner;
     private String textKalendarzText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +76,7 @@ public class wizRodz extends AppCompatActivity {
         currentUser = mAuth.getCurrentUser();
         currentUI = currentUser.getUid();
 
-        mOrder =  findViewById(R.id.btnOrder);
+        mOrder = findViewById(R.id.btnOrder);
         mItemSelected = findViewById(R.id.tvItemSelected);
         btnKalendarz = findViewById(R.id.buttonKalendarz2);
         textKalendarz = findViewById(R.id.textViewKalendarz2);
@@ -83,7 +84,7 @@ public class wizRodz extends AppCompatActivity {
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
         dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
-        textKalendarzText=dayOfMonth + "/" + (month + 1) + "/" + year;
+        textKalendarzText = dayOfMonth + "/" + (month + 1) + "/" + year;
         textKalendarz.setText(textKalendarzText);
         btnKalendarz.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +97,7 @@ public class wizRodz extends AppCompatActivity {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                                textKalendarzText=dayOfMonth + "/" + (month + 1) + "/" + year;
+                                textKalendarzText = dayOfMonth + "/" + (month + 1) + "/" + year;
                                 textKalendarz.setText(textKalendarzText);
                             }
                         }, year, month, dayOfMonth);
@@ -107,74 +108,73 @@ public class wizRodz extends AppCompatActivity {
         });
         listItems = getResources().getStringArray(R.array.shopping_item);
         checkedItems = new boolean[listItems.length];
-        spinner =  findViewById(R.id.spinnerZwierzaki);
+        spinner = findViewById(R.id.spinnerZwierzaki);
         final List<String> subjects = new ArrayList<>();
         final ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, subjects);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        db.collection("Zwierzeta").whereEqualTo("uid",currentUI).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        db.collection("Zwierzeta").whereEqualTo("uid", currentUI).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                for(DocumentSnapshot document:queryDocumentSnapshots)
-                {
-                    String wiersz=document.getString("imieZwierzecia")+"   "+document.getString("nrMetryki");
+                for (DocumentSnapshot document : queryDocumentSnapshots) {
+                    String wiersz = document.getString("imieZwierzecia") + "   " + document.getString("nrMetryki");
                     subjects.add(wiersz);
                 }
                 adapter.notifyDataSetChanged();
             }
         });
 
-}
+    }
 
     public void btnlistaOgolna(View view) {
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    final AlertDialog.Builder mBuilder = new AlertDialog.Builder(wizRodz.this);
-                    mBuilder.setTitle(R.string.dialog_title);
-                    mBuilder.setMultiChoiceItems(listItems, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
-                            if (isChecked) {
-                                mUserItems.add(position);
-                            } else {
-                                mUserItems.remove((Integer.valueOf(position)));
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder mBuilder = new AlertDialog.Builder(wizRodz.this);
+                mBuilder.setTitle(R.string.dialog_title);
+                mBuilder.setMultiChoiceItems(listItems, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
+                        if (isChecked) {
+                            mUserItems.add(position);
+                        } else {
+                            mUserItems.remove((Integer.valueOf(position)));
+                        }
+                    }
+                });
+                mBuilder.setCancelable(false);
+                mBuilder.setPositiveButton(R.string.ok_label, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        String item = "";
+                        for (int i = 0; i < mUserItems.size(); i++) {
+                            item = item + listItems[mUserItems.get(i)];
+                            if (i != mUserItems.size() - 1) {
+                                item = item + ", ";
                             }
                         }
-                    });
-                    mBuilder.setCancelable(false);
-                    mBuilder.setPositiveButton(R.string.ok_label, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int which) {
-                            String item = "";
-                            for (int i = 0; i < mUserItems.size(); i++) {
-                                item = item + listItems[mUserItems.get(i)];
-                                if (i != mUserItems.size() - 1) {
-                                    item = item + ", ";
-                                }
-                            }
-                            mItemSelected.setText(item);
-                            szczep(0);
-                        }
-                    });
-                    mBuilder.setNegativeButton(R.string.dismiss_label, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
-                        }
-                    });
-                    AlertDialog mDialog = mBuilder.create();
-                    mDialog.show();
-                }
+                        mItemSelected.setText(item);
+                        szczep(0);
+                    }
+                });
+                mBuilder.setNegativeButton(R.string.dismiss_label, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                AlertDialog mDialog = mBuilder.create();
+                mDialog.show();
+            }
 
-            });
+        });
     }
 
     protected void szczep(int id) {
         if (!mUserItems.isEmpty()) {
             String tekst = spinner.getSelectedItem().toString();
             String[] czesci = tekst.split(" ");
-            final String piesnr=czesci[czesci.length-1];
+            final String piesnr = czesci[czesci.length - 1];
             Toast.makeText(wizRodz.this, piesnr, Toast.LENGTH_SHORT).show();
             LayoutInflater inflater = LayoutInflater.from(wizRodz.this);
             String strData = textKalendarz.getText().toString();
@@ -241,6 +241,7 @@ public class wizRodz extends AppCompatActivity {
                                         szczepienie.setInne(subEditText.getText().toString());
                                     }
                                 }
+
                                 dodaj(szczepienie);
                             }
 
@@ -342,7 +343,46 @@ public class wizRodz extends AppCompatActivity {
                         badOkno.show();
                         break;
                     case "Zabieg":
-                        //Toast.makeText(wizRodz.this, "Zabieg", Toast.LENGTH_SHORT).show();
+                        inflater = LayoutInflater.from(wizRodz.this);
+                        View subViewZab = inflater.inflate(R.layout.dialog_layout, null);
+                        final EditText subEditTextZab = subViewZab.findViewById(R.id.dialogEditText);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(wizRodz.this);
+                        builder.setMessage("Opisz zabieg");
+                        builder.setView(subViewZab);
+                        builder.setPositiveButton("Dodaj",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                    }
+                                });
+                        final AlertDialog dialog = builder.create();
+                        dialog.show();
+                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Boolean wantToCloseDialog = false;
+                                if (!subEditTextZab.getText().toString().equals("")) {
+                                    wantToCloseDialog = true;
+                                }
+                                if (wantToCloseDialog) {
+                                    Zabieg zabieg = new Zabieg();
+                                    zabieg.setNrMetryki(piesnr);
+                                    zabieg.setDatez(data);
+                                    zabieg.setUidz(currentUI);
+                                    zabieg.setTypz("Zabieg");
+                                    zabieg.setOpis(subEditTextZab.getText().toString());
+                                    db.collection("Wizyta").add(zabieg).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                        @Override
+                                        public void onSuccess(DocumentReference documentReference) {
+                                            Toast.makeText(wizRodz.this, "Dodano pomyślnie!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                    dialog.dismiss();
+                                } else {
+                                    Toast.makeText(wizRodz.this, "Wprowadź opis!", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
                         break;
                     case "Zabieg higieniczny":
                         higienItems = getResources().getStringArray(R.array.zabHignien);
