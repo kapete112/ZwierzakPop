@@ -1,6 +1,7 @@
 package com.example.zwierzaki;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -38,7 +39,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-public class WyswietlZwierzaki extends AppCompatActivity {
+public class WyswietlZwierzaki extends AppCompatActivity implements Zwierze_Info_Adapter.OnZwierzeListener{
     private static final String TAG = "AddAnimal";
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -79,7 +80,15 @@ public class WyswietlZwierzaki extends AppCompatActivity {
         mRecyclerView.setLayoutManager(linearLayoutManager);
         VerticalSpacingItemDecorator itemDecorator = new VerticalSpacingItemDecorator(10);
         mRecyclerView.addItemDecoration(itemDecorator);
-        mZwierze_Info_Adapter = new Zwierze_Info_Adapter(mZwierze);
+        mZwierze_Info_Adapter = new Zwierze_Info_Adapter(mZwierze, this);
         mRecyclerView.setAdapter(mZwierze_Info_Adapter);
+    }
+
+    @Override
+    public void onZwierzeClick(int position) {
+        Log.d(TAG, "onZwierzeClick: clicked." + position);
+        //mZwierze.get(position);
+        Intent intent = new Intent(this, ZwierzeActivity.class);
+        startActivity(intent);
     }
 }

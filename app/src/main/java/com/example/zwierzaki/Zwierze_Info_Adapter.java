@@ -26,16 +26,18 @@ import java.util.List;
 public class Zwierze_Info_Adapter extends RecyclerView.Adapter<Zwierze_Info_Adapter.ViewHolder> {
 
     private ArrayList<Zwierze> mNotes = new ArrayList<>();
+    private  OnZwierzeListener mOnZwierzeListener;
 
-    public Zwierze_Info_Adapter(ArrayList<Zwierze> notes) {
+    public Zwierze_Info_Adapter(ArrayList<Zwierze> notes, OnZwierzeListener onZwierzeListener) {
         this.mNotes = notes;
+        this.mOnZwierzeListener = onZwierzeListener;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_view_zwierzaki, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(view, mOnZwierzeListener);
     }
 
     @Override
@@ -50,15 +52,28 @@ public class Zwierze_Info_Adapter extends RecyclerView.Adapter<Zwierze_Info_Adap
         return mNotes.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView title, timestamp;
+        OnZwierzeListener onZwierzeListener;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, OnZwierzeListener onZwierzeListener) {
             super(itemView);
             title = itemView.findViewById(R.id.vImieZwierzecia);
             timestamp = itemView.findViewById(R.id.vNrMetryki);
+            this.onZwierzeListener = onZwierzeListener;
+
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            onZwierzeListener.onZwierzeClick(getAdapterPosition());
+        }
+    }
+
+    public interface OnZwierzeListener{
+        void onZwierzeClick(int position);
     }
 }
 
