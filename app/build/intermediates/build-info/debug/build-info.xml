@@ -5,15 +5,15 @@
     build-mode="COLD"
     density="xhdpi"
     format="10"
-    ir-eligibility="METHOD_DELETED"
+    ir-eligibility="CLASS_ADDED"
     plugin-version="3.3.2"
-    timestamp="1557967658405"
+    timestamp="1557968811991"
     token="-2678760564816393502"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="343" />
+        duration="336" />
     <task
         name="instant-run-dex"
         duration="0" />
@@ -22,7 +22,7 @@
         duration="31" />
     <task
         name="verifier"
-        duration="3" />
+        duration="19" />
 
     <artifact
         location="C:\Users\HP\AndroidStudioProjects\Zwierzak5\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
@@ -74,7 +74,8 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1557967590782"
+        ir-eligibility="METHOD_DELETED"
+        timestamp="1557967658405"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\HP\AndroidStudioProjects\Zwierzak5\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
@@ -82,8 +83,8 @@
     </build>
     <build
         build-mode="COLD"
-        ir-eligibility="METHOD_DELETED"
-        timestamp="1557967658405"
+        ir-eligibility="CLASS_ADDED"
+        timestamp="1557968811991"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\HP\AndroidStudioProjects\Zwierzak5\app\build\intermediates\split-apk\debug\slices\slice_8.apk"

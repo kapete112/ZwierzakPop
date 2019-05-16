@@ -77,6 +77,8 @@ public class WyswietlZwierzaki extends AppCompatActivity {
     private void initRecyclerView(){
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(linearLayoutManager);
+        VerticalSpacingItemDecorator itemDecorator = new VerticalSpacingItemDecorator(10);
+        mRecyclerView.addItemDecoration(itemDecorator);
         mZwierze_Info_Adapter = new Zwierze_Info_Adapter(mZwierze);
         mRecyclerView.setAdapter(mZwierze_Info_Adapter);
     }
