@@ -1,14 +1,22 @@
 package com.example.zwierzaki;
 
+import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.io.File;
 
 public class ZwierzeActivity extends AppCompatActivity {
 
@@ -32,20 +40,20 @@ public class ZwierzeActivity extends AppCompatActivity {
 
             //Pobrać prosto z bazy danych kolejne dane na podstawie numeru metryki
 
-            tNrMetrykiMatki = (TextView)findViewById(R.id.textNrMetrykiMatki);
+            /*tNrMetrykiMatki = (TextView)findViewById(R.id.textNrMetrykiMatki);
             tNrMetrykiMatki.setText(zwierze.getNrMetrykiMatki());
 
             tNrMetrykiOjca = (TextView)findViewById(R.id.textNrMetrykiOjca);
-            tNrMetrykiOjca.setText(zwierze.getNrMetrykiOjca());
+            tNrMetrykiOjca.setText(zwierze.getNrMetrykiOjca());*/
 
             tImieZwierzecia = (TextView)findViewById(R.id.textImie);
             tImieZwierzecia.setText(zwierze.getImieZwierzecia());
 
-            tPlec = (TextView)findViewById(R.id.textPlec);
+           /* tPlec = (TextView)findViewById(R.id.textPlec);
             tPlec.setText(zwierze.getPlec());
 
             tDatUr = (TextView)findViewById(R.id.textData);
-            tDatUr.setText(zwierze.getDatUr());
+            tDatUr.setText(zwierze.getDatUr());*/
 
              FirebaseFirestore db = FirebaseFirestore.getInstance();
             db.collection("Zwierzeta").whereEqualTo("nrMetryki", zwierze.getNrMetryki()).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -54,6 +62,40 @@ public class ZwierzeActivity extends AppCompatActivity {
                     for (DocumentSnapshot document : queryDocumentSnapshots) {
                         //String wiersz = document.getString("imieZwierzecia") + "   " + document.getString("nrMetryki");
                        // subjects.add(wiersz);
+
+                        tNrMetrykiMatki = (TextView)findViewById(R.id.textNrMetrykiMatki);
+                        tNrMetrykiMatki.setText(document.getString("nrMetrykiMatki"));
+
+                        tNrMetrykiOjca = (TextView)findViewById(R.id.textNrMetrykiOjca);
+                        tNrMetrykiOjca.setText(document.getString("nrMetrykiOjca"));
+
+                        tPlec = (TextView)findViewById(R.id.textPlec);
+                        tPlec.setText(document.getString("plec"));
+
+                        tDatUr = (TextView)findViewById(R.id.textData);
+                        tDatUr.setText(document.getString("datUr"));
+
+                      /*  private StorageReference mStorageRef;
+                        mStorageRef = FirebaseStorage.getInstance().getReference();
+
+                        Uri file = Uri.fromFile(new File("path/to/images/rivers.jpg"));
+                        StorageReference riversRef = storageRef.child("images/rivers.jpg");
+
+                        File localFile = File.createTempFile("images", "jpg");
+                        riversRef.getFile(localFile)
+                                .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                                    @Override
+                                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                                        // Successfully downloaded data to local file
+                                        // ...
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception exception) {
+                                // Handle failed download
+                                // ...
+                            }
+                        });*/
                     }
                    // adapter.notifyDataSetChanged();
                 }

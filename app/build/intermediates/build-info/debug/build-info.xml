@@ -2,37 +2,34 @@
 <instant-run
     abi="armeabi-v7a,armeabi"
     api-level="23"
-    build-mode="COLD"
+    build-mode="HOT_WARM"
     density="xhdpi"
     format="10"
     plugin-version="3.3.2"
-    timestamp="1558020510729"
+    timestamp="1558188269009"
     token="-112010974937274150"
-    verifier="METHOD_DELETED" >
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="531" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="26" />
+        duration="0" />
     <task
         name="verifier"
-        duration="9" />
+        duration="0" />
 
     <artifact
-        location="C:\Users\HP\AndroidStudioProjects\Zwierzak6\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\HP\AndroidStudioProjects\Zwierzak6\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
-        type="SPLIT_MAIN" />
+        location="C:\Users\HP\AndroidStudioProjects\Zwierzak6\app\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
+        type="RESOURCES" />
 
     <build
         build-mode="FULL"
-        timestamp="1558018603244"
+        timestamp="1558188091622"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\Users\HP\AndroidStudioProjects\Zwierzak6\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
@@ -72,24 +69,12 @@
             type="SPLIT" />
     </build>
     <build
-        build-mode="COLD"
-        ir-eligibility="METHOD_DELETED"
-        timestamp="1558020172165"
-        verifier="COLD_SWAP_REQUESTED" >
+        build-mode="HOT_WARM"
+        timestamp="1558188269009"
+        verifier="COMPATIBLE" >
         <artifact
-            location="C:\Users\HP\AndroidStudioProjects\Zwierzak6\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
-            type="SPLIT_MAIN" />
-    </build>
-    <build
-        build-mode="COLD"
-        timestamp="1558020510729"
-        verifier="METHOD_DELETED" >
-        <artifact
-            location="C:\Users\HP\AndroidStudioProjects\Zwierzak6\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\HP\AndroidStudioProjects\Zwierzak6\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
-            type="SPLIT_MAIN" />
+            location="C:\Users\HP\AndroidStudioProjects\Zwierzak6\app\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
+            type="RESOURCES" />
     </build>
 
 </instant-run>
