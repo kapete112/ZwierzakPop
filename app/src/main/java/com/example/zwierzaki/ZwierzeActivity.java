@@ -2,7 +2,6 @@ package com.example.zwierzaki;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,11 +13,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-
-import java.io.File;
 
 public class ZwierzeActivity extends AppCompatActivity {
 
@@ -75,10 +71,10 @@ public class ZwierzeActivity extends AppCompatActivity {
                         tPlec.setText(document.getString("plec"));
 
                         tDatUr = (TextView)findViewById(R.id.textData);
-                        tDatUr.setText(document.getString("datUr"));
+                        tDatUr.setText(document.getString("datUr"));//NrMetryki+ "/" + "Zdjecie1"
 
                         StorageReference storageRef = FirebaseStorage.getInstance().getReference();
-                        StorageReference islandRef = storageRef.child(document.getString("uid")+ "/" + "Zdjecie" + document.getString("nrMetryki"));
+                        StorageReference islandRef = storageRef.child(document.getString("nrMetryki")+ "/" + "Zdjecie1");//("uid")+ "/" + "Zdjecie" + document.getString("nrMetryki"));
 
                         final long ONE_MEGABYTE = 1024 * 1024;
                         islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {

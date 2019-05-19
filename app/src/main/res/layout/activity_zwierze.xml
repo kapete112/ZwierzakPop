@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,94 +9,172 @@
     tools:context=".ZwierzeActivity">
 
     <TextView
-        android:id="@+id/textNrMetryki"
-        android:layout_width="0dp"
+        android:id="@+id/textData2"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="280dp"
-        android:layout_marginEnd="100dp"
-        android:text="..."
-        android:textAlignment="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Data urodzenia:"
+        android:textAlignment="textEnd"
         android:textColor="@android:color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toStartOf="@+id/textData"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textImie"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="300dp"
-        android:layout_marginEnd="100dp"
-        android:text="..."
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textPlec2" />
 
     <TextView
         android:id="@+id/textData"
-        android:layout_width="0dp"
+        android:layout_width="192dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="320dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginTop="8dp"
         android:text="..."
-        android:textAlignment="center"
+        android:textAlignment="textStart"
         android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textData2"
+        app:layout_constraintTop_toBottomOf="@+id/textPlec"
+        tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textNrMetrykiOjca"
-        android:layout_width="0dp"
+        android:id="@+id/textPlec2"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="340dp"
-        android:layout_marginEnd="100dp"
-        android:text="..."
-        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:text="Płeć:"
+        android:textAlignment="textEnd"
         android:textColor="@android:color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toStartOf="@+id/textPlec"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textNrMetrykiMatki"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="360dp"
-        android:layout_marginEnd="100dp"
-        android:text="..."
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textNrMetrykiMatki2" />
 
     <TextView
         android:id="@+id/textPlec"
-        android:layout_width="0dp"
+        android:layout_width="192dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="380dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginTop="10dp"
         android:text="..."
-        android:textAlignment="center"
+        android:textAlignment="textStart"
         android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textPlec2"
+        app:layout_constraintTop_toBottomOf="@+id/textNrMetrykiMatki"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textNrMetrykiOjca2"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:text="Nr. Metryki Ojca:"
+        android:textAlignment="textEnd"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toStartOf="@+id/textNrMetrykiOjca"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textImie2" />
+
+    <TextView
+        android:id="@+id/textNrMetrykiOjca"
+        android:layout_width="192dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="..."
+        android:textAlignment="textStart"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textNrMetrykiOjca2"
+        app:layout_constraintTop_toBottomOf="@+id/textImie"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textImie2"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Imie:"
+        android:textAlignment="textEnd"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toStartOf="@+id/textImie"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textNrMetryki2" />
+
+    <TextView
+        android:id="@+id/textImie"
+        android:layout_width="192dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="..."
+        android:textAlignment="textStart"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textImie2"
+        app:layout_constraintTop_toBottomOf="@+id/textNrMetryki"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textNrMetryki"
+        android:layout_width="192dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="41dp"
+        android:text="..."
+        android:textAlignment="textStart"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textNrMetryki2"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewZwierze"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textNrMetrykiMatki2"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:text="Nr. Metryki Matki:"
+        android:textAlignment="textEnd"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toStartOf="@+id/textNrMetrykiMatki"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textNrMetrykiOjca2" />
+
+    <TextView
+        android:id="@+id/textNrMetrykiMatki"
+        android:layout_width="192dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="..."
+        android:textAlignment="textStart"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textNrMetrykiMatki2"
+        app:layout_constraintTop_toBottomOf="@+id/textNrMetrykiOjca"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textNrMetryki2"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="8dp"
+        android:text="Nr. Metryki:"
+        android:textAlignment="textEnd"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toStartOf="@+id/textNrMetryki"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewZwierze" />
 
     <ImageView
         android:id="@+id/imageViewZwierze"
@@ -106,5 +185,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/common_google_signin_btn_icon_light_normal_background" />
+
+    <Button
+        android:id="@+id/Edytuj"
+        android:layout_width="185dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="32dp"
+        android:text="Edytuj"
+        app:layout_constraintEnd_toStartOf="@+id/Leczenie"
+        app:layout_constraintHorizontal_bias="0.384"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textData2"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/Leczenie"
+        android:layout_width="184dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:text="Leczenie"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textData" />
 
 </android.support.constraint.ConstraintLayout>

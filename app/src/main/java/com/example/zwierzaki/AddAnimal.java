@@ -173,7 +173,7 @@ public class AddAnimal extends AppCompatActivity {
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
 
-            StorageReference ref = storageReference.child(currentUI+ "/" + "Zdjecie" + NrMetryki);
+            StorageReference ref = storageReference.child(NrMetryki+ "/" + "Zdjecie1");//(currentUI+ "/" + "Zdjecie" + NrMetryki);
             ref.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
