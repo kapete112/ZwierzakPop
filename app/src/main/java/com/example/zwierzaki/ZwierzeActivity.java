@@ -1,5 +1,7 @@
 package com.example.zwierzaki;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -74,6 +76,27 @@ public class ZwierzeActivity extends AppCompatActivity {
 
                         tDatUr = (TextView)findViewById(R.id.textData);
                         tDatUr.setText(document.getString("datUr"));
+
+                        StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+                        StorageReference islandRef = storageRef.child(document.getString("uid")+ "/" + "Zdjecie" + document.getString("nrMetryki"));
+
+                        final long ONE_MEGABYTE = 1024 * 1024;
+                        islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                            @Override
+                            public void onSuccess(byte[] bytes) {
+                                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                               // saveBitmap(couponName, bitmap);
+
+                                tZdjecie = (ImageView) findViewById(R.id.imageViewZwierze);
+                                tZdjecie.setImageBitmap(bitmap);
+                                // Data for "images/island.jpg" is returns, use this as needed
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception exception) {
+                                // Handle any errors
+                            }
+                        });
 
                       /*  private StorageReference mStorageRef;
                         mStorageRef = FirebaseStorage.getInstance().getReference();
