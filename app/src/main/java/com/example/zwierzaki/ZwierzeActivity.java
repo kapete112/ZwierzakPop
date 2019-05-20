@@ -1,10 +1,13 @@
 package com.example.zwierzaki;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,6 +28,8 @@ public class ZwierzeActivity extends AppCompatActivity {
     TextView tPlec;
     TextView tDatUr;
     ImageView tZdjecie;
+    Button tEdytuj;
+    Button tWizyty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,41 +41,29 @@ public class ZwierzeActivity extends AppCompatActivity {
             tNrMetryki = (TextView)findViewById(R.id.textNrMetryki);
             tNrMetryki.setText(zwierze.getNrMetryki());
 
-            //Pobrać prosto z bazy danych kolejne dane na podstawie numeru metryki
-
-            /*tNrMetrykiMatki = (TextView)findViewById(R.id.textNrMetrykiMatki);
-            tNrMetrykiMatki.setText(zwierze.getNrMetrykiMatki());
-
-            tNrMetrykiOjca = (TextView)findViewById(R.id.textNrMetrykiOjca);
-            tNrMetrykiOjca.setText(zwierze.getNrMetrykiOjca());*/
-
             tImieZwierzecia = (TextView)findViewById(R.id.textImie);
             tImieZwierzecia.setText(zwierze.getImieZwierzecia());
 
-           /* tPlec = (TextView)findViewById(R.id.textPlec);
-            tPlec.setText(zwierze.getPlec());
-
+            tNrMetrykiMatki = (TextView)findViewById(R.id.textNrMetrykiMatki);
+            tNrMetrykiOjca = (TextView)findViewById(R.id.textNrMetrykiOjca);
+            tPlec = (TextView)findViewById(R.id.textPlec);
             tDatUr = (TextView)findViewById(R.id.textData);
-            tDatUr.setText(zwierze.getDatUr());*/
+            tZdjecie = (ImageView) findViewById(R.id.imageViewZwierze);
+            tEdytuj = (Button)findViewById(R.id.Edytuj);
+            tWizyty =(Button)findViewById(R.id.Leczenie);
 
              FirebaseFirestore db = FirebaseFirestore.getInstance();
             db.collection("Zwierzeta").whereEqualTo("nrMetryki", zwierze.getNrMetryki()).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                 @Override
                 public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                     for (DocumentSnapshot document : queryDocumentSnapshots) {
-                        //String wiersz = document.getString("imieZwierzecia") + "   " + document.getString("nrMetryki");
-                       // subjects.add(wiersz);
 
-                        tNrMetrykiMatki = (TextView)findViewById(R.id.textNrMetrykiMatki);
                         tNrMetrykiMatki.setText(document.getString("nrMetrykiMatki"));
 
-                        tNrMetrykiOjca = (TextView)findViewById(R.id.textNrMetrykiOjca);
                         tNrMetrykiOjca.setText(document.getString("nrMetrykiOjca"));
 
-                        tPlec = (TextView)findViewById(R.id.textPlec);
                         tPlec.setText(document.getString("plec"));
 
-                        tDatUr = (TextView)findViewById(R.id.textData);
                         tDatUr.setText(document.getString("datUr"));//NrMetryki+ "/" + "Zdjecie1"
 
                         StorageReference storageRef = FirebaseStorage.getInstance().getReference();
@@ -83,9 +76,7 @@ public class ZwierzeActivity extends AppCompatActivity {
                                 Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
                                // saveBitmap(couponName, bitmap);
 
-                                tZdjecie = (ImageView) findViewById(R.id.imageViewZwierze);
                                 tZdjecie.setImageBitmap(bitmap);
-                                // Data for "images/island.jpg" is returns, use this as needed
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
@@ -93,32 +84,37 @@ public class ZwierzeActivity extends AppCompatActivity {
                                 // Handle any errors
                             }
                         });
-
-                      /*  private StorageReference mStorageRef;
-                        mStorageRef = FirebaseStorage.getInstance().getReference();
-
-                        Uri file = Uri.fromFile(new File("path/to/images/rivers.jpg"));
-                        StorageReference riversRef = storageRef.child("images/rivers.jpg");
-
-                        File localFile = File.createTempFile("images", "jpg");
-                        riversRef.getFile(localFile)
-                                .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                                    @Override
-                                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                                        // Successfully downloaded data to local file
-                                        // ...
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception exception) {
-                                // Handle failed download
-                                // ...
-                            }
-                        });*/
                     }
-                   // adapter.notifyDataSetChanged();
                 }
             });
         }
+
+        tZdjecie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //NOWE WIDOKI !!! NOWE WIDOKI !!!NOWE WIDOKI !!!NOWE WIDOKI !!!NOWE WIDOKI !!!NOWE WIDOKI !!!NOWE WIDOKI !!!
+                Intent intent = new Intent(ZwierzeActivity.this, AddAnimal.class);
+                //intent.putExtra("selected_zwierze", mZwierze.get(position));
+                startActivity(intent);
+            }
+        });
+        tEdytuj.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //NOWE WIDOKI !!! NOWE WIDOKI !!!NOWE WIDOKI !!!NOWE WIDOKI !!!NOWE WIDOKI !!!NOWE WIDOKI !!!NOWE WIDOKI !!!
+                Intent intent = new Intent(ZwierzeActivity.this, AddAnimal.class);
+                //intent.putExtra("selected_zwierze", mZwierze.get(position));
+                startActivity(intent);
+            }
+        });
+        tWizyty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //NOWE WIDOKI !!! NOWE WIDOKI !!!NOWE WIDOKI !!!NOWE WIDOKI !!!NOWE WIDOKI !!!NOWE WIDOKI !!!NOWE WIDOKI !!!
+                Intent intent = new Intent(ZwierzeActivity.this, AddAnimal.class);
+                //intent.putExtra("selected_zwierze", mZwierze.get(position));
+                startActivity(intent);
+            }
+        });
     }
 }
