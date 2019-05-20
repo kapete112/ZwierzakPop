@@ -30,6 +30,7 @@ public class ZwierzeActivity extends AppCompatActivity {
     ImageView tZdjecie;
     Button tEdytuj;
     Button tWizyty;
+    String tnrMetryki;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,14 +88,15 @@ public class ZwierzeActivity extends AppCompatActivity {
                     }
                 }
             });
+            tnrMetryki = zwierze.getNrMetryki();
         }
 
         tZdjecie.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) { //int position) {
                 //NOWE WIDOKI !!! NOWE WIDOKI !!!NOWE WIDOKI !!!NOWE WIDOKI !!!NOWE WIDOKI !!!NOWE WIDOKI !!!NOWE WIDOKI !!!
-                Intent intent = new Intent(ZwierzeActivity.this, AddAnimal.class);
-                //intent.putExtra("selected_zwierze", mZwierze.get(position));
+                Intent intent = new Intent(ZwierzeActivity.this, ZdjeciaActivity.class);
+                intent.putExtra("selected_zwierze", tnrMetryki);
                 startActivity(intent);
             }
         });
