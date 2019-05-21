@@ -53,7 +53,7 @@ public class ZwierzeActivity extends AppCompatActivity {
             tEdytuj = (Button)findViewById(R.id.Edytuj);
             tWizyty =(Button)findViewById(R.id.Leczenie);
 
-             FirebaseFirestore db = FirebaseFirestore.getInstance();
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
             db.collection("Zwierzeta").whereEqualTo("nrMetryki", zwierze.getNrMetryki()).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                 @Override
                 public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -75,7 +75,7 @@ public class ZwierzeActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(byte[] bytes) {
                                 Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                               // saveBitmap(couponName, bitmap);
+                                // saveBitmap(couponName, bitmap);
 
                                 tZdjecie.setImageBitmap(bitmap);
                             }
